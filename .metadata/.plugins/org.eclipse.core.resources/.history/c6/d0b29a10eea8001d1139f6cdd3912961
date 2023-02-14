@@ -1,0 +1,68 @@
+package javaHeight02.p643;
+
+public class Sales {
+//필드
+	private String date;
+	private String code;
+	private String area;
+	private int sale;
+	private int money;
+	private String num;
+	
+//	@Override
+//		public String toString() {
+//			// object클래스의 메소드. 주소를 찍으면 자동으로 toString()붙는다
+//		//그래서 모든 클래스 Object클래스의 자식이므로 이것을 재정의해서 사용함
+//			return date+" "+code+" "+area+" "+sale+" "+money+" "+num;
+//		}
+
+	
+	//생성자
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public int getSale() {
+		return sale;
+	}
+	public void setSale(int sale) {
+		this.sale = sale;
+	}
+	public int getMoney() {
+		return money;
+	}
+	public void setMoney(int money) {
+		this.money = money;
+	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	//게세
+	public Sales(String date, String code, String area, int sale, int money, String num) {
+		super();
+		this.date = date;
+		this.code = code;
+		this.area = area;
+		this.sale = sale;
+		this.money = money;
+		this.num = num;
+	}
+	
+}

@@ -1,0 +1,10 @@
+package javaHeight02.p645;
+
+public class VectorEx05 {
+
+	public static void main(String[] args) {
+		List<Student> vlist=new Vector<>();
+
+	}
+
+}

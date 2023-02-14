@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+public class ArrayMain {
+	public static void main(String[] args){
+
+
+		Scanner sc=new Scanner(System.in);
+		System.out.println("이름> ");
+		String name=sc.nextLine();
+
+		//배열 생성
+		String sub[]= {"국어","영어","수학","과학"}; 
+
+		int input[]=new int[4];
+		int sum=0;  //총점
+		double avg=0;  //평균
+
+		//과목 점수 입력, 저장
+		for (int i = 0; i < input.length; i++) {
+			System.out.println(sub[i] + " 점수입력(0~100 사이만 입력)");
+			System.out.print(">>");
+			input[i] = sc.nextInt();
+			//전제 0~100
+			if (input[i] <= 100 && input[i] >= 0) {
+				sum += input[i];
+			} else {
+				System.out.println("입력오류. 종료함");
+				break;
+			}
+		}
+		
+		//평균 계산
+		avg = sum / input.length;
+
+		System.out.println("--------------");
+		System.out.println("학생이름 : " + name);
+		
+		System.out.println();
+		System.out.println("과목 점수 합계 : " + sum);
+		System.out.println("과목 점수 평균 : " + avg);
+	}
+}

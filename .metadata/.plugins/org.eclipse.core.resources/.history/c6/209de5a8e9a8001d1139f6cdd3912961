@@ -1,0 +1,61 @@
+package javaHeight02.p643;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+public class SalesEx {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		List<Sales> salesList1=new ArrayList<Sales>();
+		
+		salesList1.add(new Sales("0403","bc103","강남",230,276000,"3470-1234"));
+		salesList1.add(new Sales("0405","bl203","서초",150,180000,"3470-2200"));
+		salesList1.add(new Sales("0408","ac205","송파",270,324000,"3470-3300"));
+		salesList1.add(new Sales("0412","du103","용산",350,420000,"3709-4321"));
+
+		
+/*		for(int i=0;i<salesList1.size();i++) {
+			System.out.print(salesList1.get(i).getDate()+" ");
+			System.out.print(salesList1.get(i).getCode()+" ");
+			System.out.print(salesList1.get(i).getArea()+" ");
+			System.out.print(salesList1.get(i).getSale()+" ");
+			System.out.print(salesList1.get(i).getMoney()+" ");
+			System.out.print(salesList1.get(i).getNum()+" ");
+			System.out.println();
+			
+			System.out.println("---거래처코드 입력하면 매출지역, 연락처----");
+			
+			System.out.print("거래처코드> ");
+			String code=sc.next();
+			for(int j=0;j<salesList1.size();j++) {
+				if(salesList1.get(j).getCode().equals(code))
+					System.out.println("매출지역"+salesList1.get(j).getArea());
+					System.out.println("번호" + salesList1.get(j).getNum());
+				break;
+			}
+			
+			
+			System.out.println("--------------------------");
+	}
+	*/	
+		System.out.println("------매출액이 제일 높은 거래처 코드-money------");
+		int max=salesList1.get(0).getMoney();
+		int k=0;
+		for(k=0;k<salesList1.size();k++) {
+			if(max<salesList1.get(k).getMoney()) {
+				max=salesList1.get(k).getMoney();
+			}
+			
+		}
+		System.out.print("매출액 높은> "+max+salesList1.get(k).getCode());
+		
+		
+		
+		
+		
+		
+
+}//end main
+}//end class

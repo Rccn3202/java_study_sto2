@@ -1,0 +1,17 @@
+package javaHeight02;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListEx {
+
+	public static void main(String[] args) {
+		List<String> list1 = new ArrayList<String>();
+		list1.add("홍길동");
+		list1.add("이순신");
+		list1.add("김유신");
+		list1.add(1, "최영"); //1번인덱스에 최영을 넣는다
+
+	}
+
+}

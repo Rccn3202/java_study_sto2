@@ -1,0 +1,23 @@
+package javaHeight03.p656;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapEx01 {
+
+	public static void main(String[] args) {
+		Map<String, Integer> map1=new HashMap<String,Integer>();
+		map1.put("컴퓨터", 200);
+		map1.put("프린터", 50);
+		map1.put("아이폰", 210);
+		map1.put("탭", 170);
+		
+		System.out.println(map1.get("컴퓨터")); //키값 넣음
+		System.out.println(map1.get("아이폰"));
+		
+		
+		
+
+	}
+
+}

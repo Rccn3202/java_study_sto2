@@ -1,0 +1,28 @@
+package javaHeight02.p643;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class SalesEx {
+
+	public static void main(String[] args) {
+		List<Sales> salesList1=new ArrayList<Sales>();
+		
+		salesList1.add(new Sales("0403","bc","강남",230,276,"1234"));
+		salesList1.add(new Sales("0405","bl","서초",150,180,"2200"));
+		salesList1.add(new Sales("0408","ac","송파",270,324,"3300"));
+		salesList1.add(new Sales("0412","du","용산",350,420,"4321"));
+
+		
+		for(int i=0;i<salesList1.size();i++) {
+			System.out.println(salesList1.get(i).getDate());
+			System.out.println(salesList1.get(i).getCode());
+			System.out.println(salesList1.get(i).getArea());
+			System.out.println(salesList1.get(i).getSale());
+			System.out.println(salesList1.get(i).getMoney());
+			System.out.println(salesList1.get(i).getNum());
+			
+		}
+	}
+
+}

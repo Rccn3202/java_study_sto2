@@ -1,0 +1,24 @@
+package javaHeight03;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class SetEx02 {
+
+	public static void main(String[] args) {
+		//
+		
+		Set<String> set2=new HashSet();
+		set2.add("사과");
+		set2.add("배");
+		set2.add("바나나");
+		set2.add("귤");
+		set2.add("배");
+		set2.add("배");
+		
+		System.out.println();
+		
+
+	}
+
+}

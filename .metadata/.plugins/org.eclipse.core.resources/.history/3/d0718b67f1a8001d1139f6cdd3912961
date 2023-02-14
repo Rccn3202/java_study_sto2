@@ -1,0 +1,10 @@
+package Other.Ex01;
+
+public class SalesExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

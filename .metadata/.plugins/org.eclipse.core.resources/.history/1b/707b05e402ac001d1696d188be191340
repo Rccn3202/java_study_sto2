@@ -1,0 +1,15 @@
+package java_Bclass.team02;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NList {
+	public static void main(String[] args) {
+	List<NStudent> list6=new ArrayList<>();
+	
+	list6.add("±è","100","30","40","¤·¤·°í");
+    
+   
+
+}
+}

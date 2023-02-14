@@ -1,0 +1,20 @@
+package javaHeight03;
+
+import java.util.HashSet;
+import java.util.Set;
+
+public class HomeMain {
+
+	public static void main(String[] args) {
+		Set<Home> homeSet = new HashSet<>();
+		homeSet.add(new Home("502",1,423,25000));
+		homeSet.add(new Home("303",7,724,35000));
+		homeSet.add(new Home("403",2,222,40000));
+		homeSet.add(new Home("503",2,438,25000));
+		homeSet.add(new Home("503",3,171,35000));
+		
+		
+
+	}
+
+}

@@ -1,0 +1,52 @@
+package javaHeight03;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Scanner;
+import java.util.Set;
+
+public class HomeMain {
+
+	public static void main(String[] args) {
+		Set<Home> homeSet = new HashSet<>();
+		
+		homeSet.add(new Home("502",1,423,25000));
+		homeSet.add(new Home("303",7,724,35000));
+		homeSet.add(new Home("403",2,222,40000));
+		homeSet.add(new Home("503",2,438,25000));
+		homeSet.add(new Home("503",3,171,35000));
+		
+		//호수 같으면 동등객체
+		System.out.println("전체명단");
+		Iterator<Home> it = homeSet.iterator();
+		while(it.hasNext()) {
+			Home homeadd=it.next();
+			System.out.println(homeadd.getNum()+" "+homeadd.getFam()+" "+homeadd.getElec()+" "+homeadd.getFee());
+		}
+		
+		//호수 입력하면 전기사용량 나오게 출력
+		String searchNum;
+		Scanner sc=new Scanner(System.in);
+		
+		System.out.println("호수");
+		String hnum=sc.next();
+		it=homeSet.iterator();
+		boolean searchOkfalse;
+		while(it.hasNext()) {
+			Home homeadd=it.next();
+			if(homeadd.getNum().equals(hnum)) {
+				System.out.println(homeadd.getElec());
+				searchOk=true;
+			}
+		} if(!searchOk) System.out.println("해당 호수 없음");
+		
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

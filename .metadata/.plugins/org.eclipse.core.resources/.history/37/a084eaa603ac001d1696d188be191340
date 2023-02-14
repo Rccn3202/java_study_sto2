@@ -1,0 +1,31 @@
+package javaHeight03;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
+public class SetEx652 {
+	Set<Member> memberSet = new HashSet<Member>();
+	
+	
+	
+	
+	
+	public static void main(String[] args) {
+		Set<Animal> animalSet = new HashSet<Animal>();
+		animalSet.add(new Animal("강아지",15));
+		animalSet.add(new Animal("고양이",10));
+		animalSet.add(new Animal("토끼",5));
+		animalSet.add(new Animal("닭",3));
+		animalSet.add(new Animal("강아지",15));	//번지수 다르므로 저장된다
+		
+		System.out.println("set 크기"+animalSet.size());
+		Iterator<Animal> it = animalSet.iterator();
+		while(it.hasNext()) {
+			Animal animalAddr=it.next();
+			System.out.println(animalAddr.getKind()+ " "+animalAddr.getLifespan());
+		}
+		
+	}
+
+}

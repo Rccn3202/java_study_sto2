@@ -1,0 +1,20 @@
+package java_Bclass.team02;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import chap15_Collection.sec02.Board;
+
+public class M {
+
+	public static void main(String[] args) {
+		List<Student1> list=new ArrayList<>();
+		
+		list.add(new Student1("±è",100,30));
+		list.add(new Student1("ÀÌ",60,70));
+		list.add(new Student1("¹Ú",40,90));
+		
+		
+	}
+
+}
