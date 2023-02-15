@@ -1,0 +1,13 @@
+package javaHeight03.p660;
+
+import java.util.Hashtable;
+
+public class MapEx03 {
+
+	public static void main(String[] args) {
+		//Hashtable:스레드 적용
+		Map<String,Data2> teacherMap=new Hashtable<String,Data2>();
+
+	}
+
+}

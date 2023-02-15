@@ -1,0 +1,28 @@
+package javaHeight03.p659;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MapEx01 {
+
+	public static void main(String[] args) {
+		// key-전화번호,value-포인터,주소  /전화번호를 치면 포인터와 주소가 나올 수 있게
+		Map<String,Integer> shopMap1=new HashMap<String,Integer>();
+		Shop shop1=new Shop("1111", 100, "미사동1");
+		Shop shop2=new Shop("2222", 120, "미사동2");
+		Shop shop3=new Shop("3333", 140, "미사동3");
+		Shop shop4=new Shop("4444", 170, "미사동4");
+		Shop shop5=new Shop("5555", 103, "미사동5");
+		
+		shopMap1.put(shop1.getPhone(), shop1.getPoint());
+		shopMap1.put(shop2.getPhone(), shop2.getPoint());
+		shopMap1.put(shop3.getPhone(), shop3.getPoint());
+		shopMap1.put(shop4.getPhone(), shop4.getPoint());
+		shopMap1.put(shop5.getPhone(), shop5.getPoint());
+		
+		System.out.println(shopMap1.get(shop1.getPhone()));
+		
+		
+	}
+
+}

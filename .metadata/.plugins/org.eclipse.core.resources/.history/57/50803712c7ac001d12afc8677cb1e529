@@ -1,0 +1,11 @@
+package javaHeight03.p659;
+
+public class MapEx01 {
+
+	public static void main(String[] args) {
+		// key-전화번호,value-포인터,주소
+		new HashMap<String>
+
+	}
+
+}

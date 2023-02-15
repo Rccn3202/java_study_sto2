@@ -1,0 +1,13 @@
+package javaHeight03.p662;
+
+import java.util.Properties;
+
+public class PropertiesEx {
+
+	public static void main(String[] args) {
+		Properties properties=new Properties();
+		
+		properties.load(PropertiesEx.class.getResourceAsStream("database.proeprties"))
+	}
+
+}

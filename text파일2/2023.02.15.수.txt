@@ -1,1 +1,70 @@
 2023.02.15.수
+
+Vector - 스레드로 코드 짜는데 ArrayList같은게 필요함
+LinkedList-삭제,삽입 많이 할 때 효율적
+Set
+HashSet
+TreeSet
+
+Map - 인터페이스
+구현 클래스 
+HashMap
+Hashtable - 스레드
+Properties<String, String> 
+  - 키의 형태가 String
+    값의 형태가 String으로
+    미리 정의된 Map의 형태
+  - 용도 환경설정을 담고 있다
+TreeMap
+
+
+루트노드/터미널노드/간노드
+레벨-라인수
+예)
+루트
+부모
+자식
+->3레벨
+~진트리:가장 자식이 많은 것 기준으로 셈/제일 많은 자식이 3이면 3진트리
+
+컴퓨터는 2진트리구조 0,1만 씀
+2진->2진 바꾸는 법
+첫째는 두고 둘,셋 연결 끊음
+*p664 참고
+
+트리 구성
+>자료 정렬(트리가 구성되면 읽기(검색)를 하면 정렬 따로 안해도 알아서 정렬됨)
+>검색이 빠름(다 찾을 필요없이 몇번만 비교하면 됨)/시간의 복잡도(비교횟수) 낮다
+>단점:
+-초기에 트리 구성할 때 시간 걸림
+-주소를 담을 공간 필요(degree가 주소를 담은 것들임)
+-삭제가 빈번하게 발생하는 자료구조에는 비효율적
+-공간(메모리) 아껴야 되는 ㄴ경우 쓰면 안됨
+*******검색자료 만드는 것이면 트리를 생각하기!!!
+*******백업삭제는 트리ㄴㄴ 백업은 ArrayList, 삭제는 LinkedList 가 좋다
+-중복값 저장 안됨
+
+내일
+트리에 달아줄때 기준이 되는 필드 정의하는 방법, 비교하는 법
+
+3
+0  8
+   7  10
+
+1. 중위검색
+left-root-right
+왼쪽 후 중간 후 오른쪽
+=>3 0 7 8 10
+2. 
+
+
+-----------------------------
+CSS 공부하는 사이트
+W3
+https://www.w3schools.com/
+
+css tutorial mozilla
+https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps
+
+codeAcademy
+https://www.codecademy.com/learn/learn-css

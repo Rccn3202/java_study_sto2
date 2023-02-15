@@ -1,0 +1,20 @@
+package javaHeight03.p659;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class TNameMain {
+
+	public static void main(String[] args) {
+		
+		Map<String,TValue> tMap1=new HashMap<String,TValue>();
+		
+		TClass t1=new TClass("±è", new Tvalue("3-1", 30));
+		TClass t2=new TClass("ÀÌ", new Tvalue("3-2", 20));
+		TClass t3=new TClass("¹Ú", new Tvalue("3-3", 40));
+		
+		tMap1.put(t1.getName(),t1.getVa1());
+
+	}
+
+}
