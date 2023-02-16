@@ -1,0 +1,12 @@
+package javaHeight03.p672;
+
+public class ComparableEx04 {
+
+	public static void main(String[] args) {
+		String name="ȫ�浿"
+		Integer score=100;
+		
+
+	}
+
+}

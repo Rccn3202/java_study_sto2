@@ -1,0 +1,23 @@
+package javaHeight03;
+
+import java.util.Set;
+import java.util.TreeSet;
+
+public class TreeSetEx01 {
+
+	public static void main(String[] args) {
+		Set ts1=new TreeSet<Integer>();
+		
+		ts1.add(4);
+		ts1.add(7);
+		ts1.add(4);
+		ts1.add(0);
+		ts1.add(8);
+		ts1.add(9);
+		ts1.add(2);
+		
+		
+
+	}
+
+}

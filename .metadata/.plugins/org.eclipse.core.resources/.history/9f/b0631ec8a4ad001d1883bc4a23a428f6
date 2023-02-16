@@ -1,0 +1,16 @@
+package javaHeight03.p670;
+
+import java.util.TreeMap;
+
+public class TreeMapEx02 {
+
+	public static void main(String[] args) {
+		TreeMap<String,String> treeMap= new TreeMap<>();
+		
+		treeMap.put("¿µ¾÷ºÎ","°­Á¤È£");
+		treeMap.put("È«º¸ºÎ","±è°­ÀÎ");
+		treeMap.put("±âÈ¹ºÎ","±è¿µÀÚ");
+
+	}
+
+}
