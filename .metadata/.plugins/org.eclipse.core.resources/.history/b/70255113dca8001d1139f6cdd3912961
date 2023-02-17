@@ -1,8 +1,0 @@
-package javaHeight02.p643;
-
-public class Board {
-	private String subject; //게시판 제목
-	private String content; //게시판 내용
-	private String writer; //게시판 글쓴이
-	private String joindate; //게시 날짜
-}

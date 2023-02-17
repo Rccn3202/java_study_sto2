@@ -52,7 +52,7 @@ public class Person implements Comparable<Person> {
 //		else return 1;
 		
 		//이름순
-	//	return name.compareTo(o.name);	//String 클래스에 있는 메소드를 호출함. 그래서 알아서 0,-1,1을 구해줌
+	//	return name.compareTo(o.name);	//지금 들어온 name이랑 o.name 비교String 클래스에 있는 메소드를 호출함. 그래서 알아서 0,-1,1을 구해줌
 		
 		//이름 역순으로 하기
 		// o.name.compareTo(name);]

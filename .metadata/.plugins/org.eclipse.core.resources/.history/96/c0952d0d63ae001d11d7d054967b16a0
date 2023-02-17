@@ -1,0 +1,8 @@
+package javaHeight03.p675;
+
+import javaHeight03.p659.Tvalue;
+
+public class Dname {
+	private String de;
+	private DepartValue dv;
+}

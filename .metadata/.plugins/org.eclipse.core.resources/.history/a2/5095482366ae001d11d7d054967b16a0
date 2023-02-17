@@ -1,0 +1,10 @@
+package javaHeight03.p676;
+
+public class 영업부서별실적표 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,14 @@
+package javaHeight03.p675;
+
+import java.util.TreeSet;
+
+public class ComparableEx {
+
+	public static void main(String[] args) {
+		TreeSet<Fruit> treeSet=new TreeSet<Fruit>();
+		
+		treeSet.add(new Fruit("Æ÷µµ",3000));
+
+	}
+
+}

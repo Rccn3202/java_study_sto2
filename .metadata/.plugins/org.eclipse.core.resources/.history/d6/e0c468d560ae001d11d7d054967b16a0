@@ -1,0 +1,10 @@
+package javaHeight03.p675;
+
+public class SaleDMain {
+
+	public static void main(String[] args) {
+		// 부서명이 키, 매장위치,판매실적 소속이 벨류
+
+	}
+
+}

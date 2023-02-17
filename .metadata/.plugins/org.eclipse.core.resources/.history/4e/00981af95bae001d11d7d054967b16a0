@@ -1,0 +1,14 @@
+package javaHeight03.p675;
+
+public class Movie {
+
+	private String movieName;
+	private Integer ticket;
+	
+	public Movie(String movieName, Integer ticket) {
+		this.movieName = movieName;
+		this.ticket = ticket;
+	}
+	
+	
+}

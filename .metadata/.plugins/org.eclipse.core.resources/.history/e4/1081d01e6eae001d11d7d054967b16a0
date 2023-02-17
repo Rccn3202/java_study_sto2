@@ -1,0 +1,13 @@
+package chap15_Collection.sec08;
+
+import java.util.List;
+
+public class ImmutableEx {
+
+	public static void main(String[] args) {
+		//List 불변 컬렉션 생성
+		List<String> immutableList1 = List.of()"A","B","C");
+
+	}
+
+}

@@ -1,0 +1,7 @@
+package javaHeight03.p676;
+
+public class 何辑疙家加 {
+
+	private String 何辑疙;
+	private String 家加;
+}

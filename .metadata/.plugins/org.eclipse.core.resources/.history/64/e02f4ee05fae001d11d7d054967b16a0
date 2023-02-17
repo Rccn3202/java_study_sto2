@@ -1,0 +1,20 @@
+package javaHeight03.p675;
+
+import java.util.TreeSet;
+
+public class Movie2Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		TreeSet<Movie2> movie2=new TreeSet<Movie2>(new Movie2Comparator());
+		
+		movie2.add(new Movie("조커",12));
+		movie2.add(new Movie("알라딘",25));
+		movie2.add(new Movie("남산",11));
+		movie2.add(new Movie("극한직업",30));
+		movie2.add(new Movie("기생충",33));
+		
+	}
+
+}

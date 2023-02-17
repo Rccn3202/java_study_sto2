@@ -1,0 +1,13 @@
+package chap15_Collection.sec06;
+
+public class StackEx {
+
+	public static void main(String[] args) {
+		//Stack 컬렉션 생성
+		Stack<Coin> coinBox = new Stack<Coin>();
+		
+		//
+
+	}
+
+}

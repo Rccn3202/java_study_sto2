@@ -1,0 +1,7 @@
+package javaHeight03.p675;
+
+import java.util.Comparator;
+
+public class MovieComparable implements Comparator<Movie> {
+
+}
