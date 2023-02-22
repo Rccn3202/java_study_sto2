@@ -1,0 +1,48 @@
+2023.02.21.화
+12강
+=1===============
+자바에서 자동으로 처리
+1.Object 모든 상속
+2.lang 패키지 자동으로 import 된다
+
+System 클래스 : Scanner 쓸 때 씀 (System.in : 시스템 쓸 때 입력하는 걸로 쓰겠다)
+	        System.out.print(); 시스템 클래스 쓸 때 화면에 출력해준다
+
+롬북은 스프링할 때 많이 씀
+p510
+자바기본->스프링 프레임워크
+
+12.4 시스템 클래스
+시스템-윈도우 기능 이용하는 것
+운영체제
+: 하드웨어와 소프트웨어 사이에서 소프트웨어를 잘 실행할 수 있도록 하드웨어를 컨트롤 해주는 일을 하는 소프트웨어
+operating system(OS)
+종류 - 윈도우,맥,리눅스,유닉스
+         안드로이드,ios
+
+=2==============
+프로그램 실행시간 구하기
+
+시스템 프로퍼티 읽기:어떤 디렉토리에 저장해라 이런 프로그램 짤 때
+1.Object 클래스
+모든 클래스의 부모다
+동등객체
+hashcode() equals()
+toString() 
+
+2.시스템 클래스
+윈도우의 도움 요청
+종료 system.exit(0)
+시스템 날짜 system.nanoTime / system.currentTimeMills
+키보드 입력 system.in.read
+화면출력 system.out.println
+에러출력 system.err.println
+사용하는 드라이브는 system.getProperty("user.home")
+
+=3=========
+UTF-8 이 문자의 기본
+
+
+스프링빌더-실무에서 잘 안씀
+메모리 낭비없음, 중간에 추가삭제시 시간 소요
+

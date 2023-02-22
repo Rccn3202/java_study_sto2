@@ -1,7 +1,0 @@
-package javaHeight03;
-
-public class Animal {
-	private String kind; //동물종류
-	private int lifespan; //수명
-	
-}

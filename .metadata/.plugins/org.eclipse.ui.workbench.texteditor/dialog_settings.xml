@@ -6,8 +6,9 @@
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
-		<item key="selection" value="Comparato"/>
+		<item key="selection" value="in"/>
 		<list key="findhistory">
+			<item value="in"/>
 			<item value="comparaTo"/>
 			<item value="comparaTo("/>
 			<item value="it"/>
