@@ -8,6 +8,7 @@
 		<item key="isRegEx" value="false"/>
 		<item key="selection" value="in"/>
 		<list key="findhistory">
+			<item value="LocalDateTime start = LocalDateTime.of(2023, 2,23,9,37);"/>
 			<item value="in"/>
 			<item value="comparaTo"/>
 			<item value="comparaTo("/>

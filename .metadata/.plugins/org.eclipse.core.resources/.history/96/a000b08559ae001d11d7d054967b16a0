@@ -1,7 +1,0 @@
-package javaHeight03.p675;
-
-import java.util.Comparator;
-
-public class FrutiComparator implements Comparator<Fruit> {
-
-}

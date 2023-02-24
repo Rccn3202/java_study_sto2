@@ -1,9 +1,0 @@
-package javaHeight03.p676;
-
-public class 소속매장위치판매실적 {
-
-	private String 소속;
-	private String 매장위치;
-	private Integer 판매실적;
-	
-}
