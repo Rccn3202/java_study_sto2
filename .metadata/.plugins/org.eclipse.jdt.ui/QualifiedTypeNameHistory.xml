@@ -1,23 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="java.util.SortedSet"/>
-    <fullyQualifiedTypeName name="java.util.NavigableMap"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
-    <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
-    <fullyQualifiedTypeName name="chap15_Collection.sec05.FruitComparator"/>
-    <fullyQualifiedTypeName name="chap15_Collection.sec05.BusComparator"/>
-    <fullyQualifiedTypeName name="javaHeight03.p675.Movie2"/>
-    <fullyQualifiedTypeName name="java.util.TreeMap"/>
-    <fullyQualifiedTypeName name="javaHeight03.p676.소속매장위치판매실적"/>
-    <fullyQualifiedTypeName name="java.lang.Comparable"/>
-    <fullyQualifiedTypeName name="javaHeight03.p676.부서명소속comparator"/>
-    <fullyQualifiedTypeName name="java.util.TreeSet"/>
     <fullyQualifiedTypeName name="java.util.NavigableSet"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.util.Stack"/>
     <fullyQualifiedTypeName name="java.util.Queue"/>
     <fullyQualifiedTypeName name="javaHeight05.queue.Message"/>
-    <fullyQualifiedTypeName name="java.util.HashSet"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
@@ -27,19 +14,14 @@
     <fullyQualifiedTypeName name="java_Bclass.team02.Student"/>
     <fullyQualifiedTypeName name="java.lang.NumberFormatException"/>
     <fullyQualifiedTypeName name="java_Bclass.team02.Search_"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="java.util.Collections"/>
     <fullyQualifiedTypeName name="java.util.Collection"/>
     <fullyQualifiedTypeName name="org.graalvm.compiler.nodes.debug.StringToBytesNode"/>
-    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="java.io.IOException"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="java.util.Arrays"/>
-    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
-    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
     <fullyQualifiedTypeName name="java.text.DecimalFormat"/>
-    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
     <fullyQualifiedTypeName name="java.util.LinkedList"/>
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="java_Bclass.team02.Last_method"/>
@@ -60,4 +42,22 @@
     <fullyQualifiedTypeName name="java.lang.IllegalArgumentException"/>
     <fullyQualifiedTypeName name="com.sun.jdi.InvocationException"/>
     <fullyQualifiedTypeName name="java.lang.reflect.InvocationTargetException"/>
+    <fullyQualifiedTypeName name="java.util.HashSet"/>
+    <fullyQualifiedTypeName name="javaCh12.ex09.StudentEx"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="jdk.internal.misc.FileSystemOption"/>
+    <fullyQualifiedTypeName name="java.lang.Byte"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+    <fullyQualifiedTypeName name="java.lang.Math"/>
+    <fullyQualifiedTypeName name="java.time.format.DateTimeFormatter"/>
+    <fullyQualifiedTypeName name="java.time.temporal.ChronoUnit"/>
+    <fullyQualifiedTypeName name="sun.util.logging.resources.logging"/>
+    <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+    <fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+    <fullyQualifiedTypeName name="javaCh13.Product"/>
+    <fullyQualifiedTypeName name="javaCh13.HomeAgency"/>
+    <fullyQualifiedTypeName name="javaCh13.HomeAgency.CarAgency"/>
 </qualifiedTypeNameHistroy>
