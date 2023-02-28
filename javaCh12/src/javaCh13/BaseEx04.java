@@ -3,7 +3,8 @@ package javaCh13;
 public class BaseEx04 {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		A<String> a=new A<String>();
+		AA<Integer, Boolean> aa=new AA<Integer,Boolean>();
 
 	}
 
