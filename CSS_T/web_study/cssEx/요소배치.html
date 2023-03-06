@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>요소배치</title>
+    <style>
+        #containner{
+            width: 500px;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+        }
+        .circle{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50% 50%;
+        }
+        #red{
+            background: red;
+            left: 20px;
+            top:20px;
+        }
+        #green{
+            background: green;
+            right: 20px;
+            top: 20px;
+        }
+        #yellow{
+            background: yellow;
+            top: 200px;
+            left: 20px;
+        }
+        #blue{
+            background: blue;
+            top: 200px;
+            right: 20px;
+        }
+        #containner1{
+            width: 800px;
+            height: 700px;
+            overflow: hidden;
+            position: relative;
+        }
+        .image{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+
+        }
+        #image1{
+            left:10px;
+            top: 20px;
+        }
+        #image2{
+            right:10px;
+            top: 20px;
+        }
+        #image3{
+            left:10px;
+            top: 400px;
+        }
+        #image4{
+            right:10px;
+            top: 400px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Dummy Text</h1>
+    <div id="containner">
+      <div id="red" class="circle"></div>
+      <div id="green" class="circle"></div>
+      <div id="blue" class="circle"></div>
+      <div id="yellow" class="circle"></div>
+    </div>
+    <h1> Dummy Text</h1>
+    <div id="containner1">
+        <div id="image1" class="image">
+           <img src="https://static.coupangcdn.com/qa/cmg_paperboy/image/1677551011048/Untitled-1.jpg">
+        </div>
+        <div id="image2" class="image">
+            <img src="https://static.coupangcdn.com/sa/cmg_paperboy/image/1677043882246/C2-B2%28468x298%29_.jpg">
+         </div>
+         <div id="image3" class="image">
+            <img src="https://static.coupangcdn.com/ba/cmg_paperboy/image/1677043928041/C2-S3%28228x298%29.jpg">
+         </div>
+         <div id="image4" class="image">
+            <img src="https://thumbnail9.coupangcdn.com/thumbnails/remote/x/image/displayitem/displayitem_b764e4d4-f127-46ae-a3fb-213a99b7abca.png">
+         </div>
+    </div>
+    <h1> Dummy Text </h1>
+</body>
+</html>

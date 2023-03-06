@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 Position absolute</title>
+    <style>
+        body > div {
+            width: 400px; height: 130px;
+            border: 3px solid black;
+            position: relative;
+            overflow-y: scroll;
+        }
+        .box{
+            width: 100px; 
+            height: 100px;
+            position: absolute; /* 상위(body>div)가 기준되어 배치*/
+        }/* z-index: 100;  겹칠때 숫자가 제일 큰게 제일 앞으로 보인다 */
+        .box:nth-child(1){  background-color:red; left:10px; top:10px ; z-index: 100;  }
+        .box:nth-child(2) { background-color: green; left: 50px; top:50px ; z-index: 10;}
+        .box:nth-child(3) { background-color: blue;  left:90px; top:90px ; z-index: 1;}
+    </style>
+</head>
+<body>
+    <h1> 큰제목1 위치속성 공식1 </h1>
+    <!-- - 문제1 h1 태그 2개가 붙어 있어서 div 태그가 영역을 차지 하지 않음
+    해결방법 : <b> <u> 자손이 position 속성에 absolute 키워드를 적용하려면 부모에 height속성을 입력합니다 </u></b> -->
+    <div>  
+        <div class="box"> </div>
+        <div class="box"> </div>
+        <div class="box"> </div>
+    </div>
+    <h1> 큰제목2 위치속성 공식2 </h1>
+     <!--  문제2- 색상이 적용된 상자가 자신의 부모를 기준으로 위치를 잡을 수 없습니다 
+    왜냐면 position속성에 absolute 키워드를 적용하면 부모 태그가 영역을 차지 하지 않습니다 
+    해결방법 : 자손의 position속성에 absolute 키워드를 적용하려면 
+              부모의 position 속성에 relative 키워드를 적용합니다.  
+    -->
+    <!-- 내용이 요소 크기를 벗어날때 처리법 
+       overflow 속성 사용 hidden, scroll
+    -->
+</body>
+</html>

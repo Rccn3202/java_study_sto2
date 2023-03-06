@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>셀렉터와 스타일 속성</title>
+    <style>
+       div, p{
+        color: red;
+       } 
+       p {
+          font-family: 궁서체;
+       }
+       #label1 {
+        color: green;
+       }
+       #a1{
+        color: blue;
+       }
+       #a2{
+        color: green;
+       }
+       #a3{
+        color:red
+       }
+       .aa{
+        background-color: beige;
+       }
+       .bb{
+        background-image: url("../image/1.jpg");
+       }
+    </style>
+</head>
+<body>
+    <h1> 셀렉터 개요</h1>
+    <img src="../image/셀렉터란.png">
+    <div>
+      <p> 태그셀렉터1 </p>
+    </div>  
+    <p> 태그셀렉터2 </p>
+    <form >
+      <label id="label1" for="name"> 이름 </label>
+      <input type="text" id="label1"> 
+    </form>
+    <table border="1" class="aa">
+      <tr> <td> 월 </td> <td> 화 </td> <td> 수 </td> <td> 목 </td> <td> 금 </td></tr>
+      <tr> <td id="a1"> 국어 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td></tr>
+      <tr> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td> <td id="a1"> 국어 </td> <td> 체육 </td> <td> 미술 </td></tr>
+      <tr> <td> 미술 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td></tr>
+    </table>
+    <!-- 국어 - 파랑색, 영어 - 초록, 수학 - 빨강색 -->
+    <table border="1" class="bb">
+        <tr> <td> 월 </td> <td> 화 </td> <td> 수 </td> <td> 목 </td> <td> 금 </td></tr>
+        <tr> <td id="a1"> 국어 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td></tr>
+        <tr> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td> <td id="a1"> 국어 </td> <td> 체육 </td> <td> 미술 </td></tr>
+        <tr> <td> 미술 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td> <td id="a2"> 영어 </td> <td id="a3"> 수학 </td></tr>
+      </table>
+</body>
+</html>

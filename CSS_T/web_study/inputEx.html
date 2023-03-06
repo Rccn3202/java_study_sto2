@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>입력상자</title>
+</head>
+<body>
+    <form action="/action_page.jsp" target="_blank" method="post"> <!-- action=서버의 파일로 전달-->
+        <label for="fname">  First name: </label>
+        <input type="text" id="fname" name="f" value="john"><br><br> <!-- id = 유일한 태그를 이름 name=서버로 넘길때 파라미터이름 -->
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="ln" value="Kim"><br><br>
+        <input type="submit" value="로그인">
+        <input type="submit" formaction="/action_page2.jsp" value="관리자로그인">
+    </form>
+</body>
+</html>

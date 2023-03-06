@@ -1,0 +1,22 @@
+html{
+    margin: 0;
+    border: 0;
+    padding: 0;
+
+}
+#data1{
+  margin-right: 20px;  
+  border-right: 20px;
+  padding-right: 60px;
+}
+#data2{
+   
+    margin: 50px 100px 150px 200px;/* top right bottom left */
+    border: 500px 800px;  /* top bottom, left right */ 
+    padding: 300px; /* 전체 */
+}
+div {
+  border: .3125rem dotted red;
+  border-left: .3125rem solid blue;
+  border-top: .625rem dashed green;
+}

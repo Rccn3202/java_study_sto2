@@ -1,0 +1,42 @@
+body{
+    background-color: rgb(241, 223, 235); 
+    background-image: url("../image/5.jpg"); 
+    background-repeat: no-repeat;
+    background-position: left bottom;
+    background-attachment: scroll;
+}
+.header {
+    color: red;
+}
+h2 {
+    color: green;
+    font-variant: small-caps;
+}
+
+#font1 {
+    font-family: 명조체;
+    font-style: unset;
+    font-size: 1.875rem;
+    font-weight: normal;
+
+}
+h3 {
+    text-align: right;
+}
+a:link{
+    color: #ff0000;
+    text-decoration: none;
+    font-size: large;
+}
+a:visited {
+    color:rgb(82, 17, 16);
+    font-size: x-large;
+}
+a:hover{
+    color: rgb(215, 50, 39);
+    font-size: xx-large;
+}
+a:active{
+    color:hsl;
+    font-size: medium;
+}

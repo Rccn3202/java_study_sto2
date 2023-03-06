@@ -49,7 +49,6 @@
     <fullyQualifiedTypeName name="sun.net.www.content.text.plain"/>
     <fullyQualifiedTypeName name="chap16_LambdaExpressions.sec05.Person01"/>
     <fullyQualifiedTypeName name="chap16_LambdaExpressions.sec05.Computer"/>
-    <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
     <fullyQualifiedTypeName name="chap16_LambdaExpressions.sec06.Person"/>
     <fullyQualifiedTypeName name="chap16_LambdaExpressions.sec06.Member"/>
     <fullyQualifiedTypeName name="java.util.Set"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="java.util.stream.Stream"/>
     <fullyQualifiedTypeName name="java.util.stream.IntStream"/>
     <fullyQualifiedTypeName name="org.graalvm.compiler.hotspot.aarch64.AArch64HotSpotConstantRetrievalOp"/>
+    <fullyQualifiedTypeName name="java.lang.FunctionalInterface"/>
 </qualifiedTypeNameHistroy>
