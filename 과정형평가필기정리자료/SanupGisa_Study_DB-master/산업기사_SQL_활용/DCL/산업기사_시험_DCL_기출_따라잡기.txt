@@ -1,0 +1,17 @@
+1. Commit 하지 않은 항목들이 담겨진 데이터베이스를 원래 상태로 초기화시키는 과정
+
+2. 권한 부여
+
+3. GRANT, ON
+
+4. GRANT ALL ON 학생 TO 김하늘 WITH GRANT OPTION
+
+5. GRANT DELETE ON 강좌 TO 김하늘 WITH GRANT OPTION
+
+6. REVOKE GRANT OPTION FOR SELECT, INSERT, DELETE ON 교수 FROM 임꺽정
+
+7. REVOKE GRANT OPTION FOR UPDATE ON 수강 FROM 임꺽정 CASCADE
+
+8. 트랜잭션이 수행한 내용을 데이터베이스에 반영하는 명령어
+
+9. ROLLBACK TO P1

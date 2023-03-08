@@ -1,0 +1,104 @@
+1. M : 1 순환 관계
+- 1. 해당 Table 내에 FK Column 추가
+- 2. 이 FK 는 같은 Table 내의 다른 Row 의 PK Column 을 참조하게 됨
+- 3. FK Column 명칭은 가능한 관계명칭을 반영
+- 4. 이 FK 는 결코 NN (Not Null) 이 될 수 없음
+  = 자기 Entity 에서 떨어져 나왔지만, 선분에 의해서 만들어졌으므로, NN 이 될 수 없음
+
+2. 1 : 1 순환 관계
+- 1. 해당 Table 내에 UNIQUE 한 FK Column 추가
+- 2. 이 FK 는 같은 Table 내의 다른 Row 의 PK Column 을 참조하게 됨
+- 3. FK Column 명칭은 가능한 관계명칭을 반영
+- 4. 이 FK 는 결코 NN (Not Null) 이 될 수 없음
+  = 1. 1 : 1 의 특성상 U2 가 지정 됨
+  = 2. 1 : 1 순환관계의 Table 에는 Null 상태의 Data 가 존재할 수도 있음
+
+3. 복잡한 E-R Model 을 Table 로
+- 1. Arc 형태
+  = 배타적 관계에 있는 모델을 설계하는 법
+     -> 1. 각각의 FK (Foreign Key) 를 전부 다 분리하기 (Foreign Key 분리)
+         => 1. 분리를 하는 순간, NN (Not Null) 성질이 깨짐
+         => 2. 어떤 FK A 에는 Data 가 들어가고, 또 어떤 FK B 에는 Data 가 안들어가는 상황 발생 가능
+ 
+     -> 2. 각각의 FK (Foreign Key) 전체를 전부 다 묶어서 하나의 값으로 가져오기 (Foreign Key 결합)
+         => 1. 모든 FK 를 묶어서 하나의 값으로 가져왔으므로, 통합 FK 가 만들어짐 (FK 1개)
+         => 2. FK 에 들어가는 모든 경우의 Data 가 다 들어옴
+         => 3. 전체를 전부 다 묶어서 하나의 값으로 가져온 선분이 하나의 Attribute 가 되어 Type Field 가 됨 (구분 코드)
+              * 구분 코드를 넣어서 이 Data 의 FK 가 A Entity 출신인지, B Entity 출신인지 확인
+
+     -> 3. 사용해야 하는 Foreign Key 가 많을 때, `Foreign Key 결합 (외부 키 결합)` 방법을 사용하는 것이 더 바람직함
+         => 1. Exclusive 관계를 보다 편리하게 다룰 수 있음
+         => 2. Column 의 개수가 틀릴 때 잘 정리하여 Default 값을 어떤 값으로 설정할지 결정
+
+- 2. SubType 형태
+  = 1. 하나의 Table 로 통합
+     -> 1. Sub-Type 을 SuperType 에 통합하여 하나의 Table 로 생성
+     -> 2. 이 통합된 Table 은 모든 SubType 의 Data 를 포함해야 함
+     -> 3. 주로 SubType 에 적은 행의 속성이나 관계를 가진 경우에 적용
+     -> 4. 설치
+         => 1. SuperType 으로 Table 명칭 부여
+         => 2. SubType 을 구분할 수 있도록 Column 추가
+              * Type Field 를 만들고, 그 안에 구분 코드를 넣어서 SubType 을 구분 (구분 Column)
+
+         => 3. SuperType 의 속성을 Column 명으로
+         => 4. SubType 의 속성을 Column 명으로
+         => 5. SuperType 의 관계를 FK 로
+         => 6. SubType 의 관계를 FK 로
+
+    -> 5. SuperType 과 연결되어 있는 관계를 `공통 Relation`
+    -> 6. SubType 과 연결되어 있는 관계를 `별도의 Relation`
+
+  = 2. SubType Table 로 통합
+     -> SubType 별로 하나씩 가져가기
+
+  = 3. Arc 형태로 저장
+     -> SuperType 도 ENTITY 
+  
+  = 4. Data 의 Table 로 분할
+     -> 1. 각각의 SubType 마다 하나의 Table 로 생성
+     -> 2. 분할된 Table 에는 해당 SubType 의 Data 만 통합해야 함
+     -> 3. 주로 SubType 에 많은 양의 속성이나 관계를 가진 경우에만 적용 됨
+     -> 4. SubType 인 B Table 과 C Table 을 따로 빼는 법
+         => 1. SuperType 인 A Table 이 가지고 있는 것 (공통 Relation) 들을 전부 옮김
+         => 2. SubType 인 B Table 의 속성을 옮김 (같은 SubType Depth (Level) 안에 속해 있다면 B 와 C 중 먼저 옮기고 싶은 것부터 옮겨도 상관 없음)
+         => 3. B Table 에 붙어 있는 Relation 을 옮김
+         => 4. SubType 인 C Table 의 속성을 옮김
+         => 5. C Table 에 붙어 있는 Relation 을 옮김
+
+  = 5. 장점과 단점
+     -> 1. Data Access 가 보다 간편
+     -> 2. VIEW 를 활용하여 각 SubType 만을 Access 하거나 수정 가능
+     -> 3. 수행 속도가 좋아지는 경우 있음
+     -> 4. SubType 구분 없는 행의 집합의 가공에 유의
+     -> 5. 다수의 SubType 로 통합한 경우 Join 감소 효과가 크다
+     -> 6. 복잡한 처리를 하나의 SQL 로 통합하기가 용이
+
+  = 6. 발생할 수 있는 문제 (단점)
+     -> 1. 전체적인, 혹은 SubType 구분 없이 Data 를 처리하는 경우 UNION 발생
+     -> 2. 처리속도가 감소하는 경우가 많음
+
+  = 7. Arc (아크) 장점
+     -> 1. SuperType 과 SubType 를 각각 Table 로
+     -> 2. SuperType 과 SubType Table 간에는 Arc (아크) 관계
+     -> 3. 다음의 여러 가지 경우를 만족할 때 사용
+         => 1. 전체 Data 처리가 빈번
+         => 2. SubType 의 처리는 주로 독립적으로 발생
+         => 3. Table 을 통합했을 때 Column 의 수가 너무 많아지는 겨우
+         => 4. SubType 에 Column 수가 많은 경우
+         => 5. Transaction 에 주로 SuperType (결합 부분) 에서 발생
+         => 6. SuperType 의 처리 범위가 넓고 방대하여 단일 Table Clustering 을 해야 할 때
+
+4. DataType 및 길이의 결정
+- 1. 문자인지 숫자인지를 먼저 분할
+- 2. 문자 형태인 경우
+  = 1. Column 값에 가변 길이 결정
+  = 2. Column 길이 조사 및 정의
+  = 3. LONG Type 사용 여부 결정
+  = 4. 특수형태 (SOUND, IMAGE 형태)
+  = 5. 날짜면 전부 DATE '' 를
+
+- 3. 숫자인 경우
+  = 1. 문자 형태로
+  = 2. 최대 길이 조사점 포함
+  = 3. 소수 점 출력
+ 

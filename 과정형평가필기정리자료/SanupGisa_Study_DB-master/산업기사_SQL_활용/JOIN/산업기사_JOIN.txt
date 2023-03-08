@@ -1,0 +1,51 @@
+1. INNER JOIN
+
+- 1. EQUI JOIN
+
+<WHERE 절을 이용한 EQUI JOIN>
+SELECT 테이블명1.속성명, 테이블명2.속성명
+FROM 테이블명1, 테이블명2
+WHERE 테이블명1.속성명 = 테이블명2.속성명
+
+<NATURAL JOIN 절을 이용한 EQUI JOIN>
+SELECT 테이블명1.속성명, 테이블명2.속성명
+FROM 테이블명1 NATURAL JOIN 테이블명2
+
+<JOIN ~ USING 절을 이용한 EQUI JOIN>
+SELECT 테이블명1.속성명, 테이블명2.속성명
+FROM 테이블명1 JOIN 테이블명2 USING(속성명)
+
+
+- 2. NON-EQUI JOIN
+
+SELECT 테이블명1.속성명, 테이블명2.속성명
+FROM 테이블명1, 테이블명2
+WHERE (NON-EQUI JOIN 조건)
+
+<학생> 테이블과 <성적등급> 테이블을 JOIN 하여 각 학생의 '학번', '이름', '성적', '등급'을 출력하는 SQL문
+SELECT 학번, 이름, 성적, 등급 
+FROM 학생, 성적등급 
+WHERE 학생.성적 BETWEEN 성적등급.최저 AND 성적등급.최고
+
+
+2. OUTER JOIN
+
+LEFT OUTER JOIN
+
+<LEFT OUTER JOIN>
+SELECT [테이블명1].속성명, [테이블명2].속성명,...
+FROM 테이블명1 LEFT OUTER JOIN 테이블명2
+ON 테이블명1.속성명 = 테이블명2.속성명
+
+<+ 표현>
+SELECT [테이블명1].속성명, [테이블명2].속성명,...
+FROM 테이블명1, 테이블명2
+WHERE 테이블명1.속성명 = 테이블명2.속성명(+)
+
+
+3. FULL OUTER JOIN
+
+<FULL OUTER JOIN>
+SELECT [테이블명1].속성명, [테이블명2].속성명,...
+FROM 테이블명1 FULL OUTER JOIN 테이블명2
+ON 테이블명1.속성명 = 테이블명2.속성명

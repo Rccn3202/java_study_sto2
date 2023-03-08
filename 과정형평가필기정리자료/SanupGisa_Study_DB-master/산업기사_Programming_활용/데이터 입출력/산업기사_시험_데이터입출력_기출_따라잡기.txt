@@ -1,0 +1,109 @@
+1. 15#22 입력
+
+# include <stdio.h>
+main() {
+    int i, j;
+    scanf('%o#%x", &i, &j);
+    printf("%d %d", i, j);
+}
+
+8진수 15 -> 13
+
+i = 15;
+
+
+16진수 22 -> 34
+
+j = 34;
+
+--> 15 34
+
+
+2.
+
+# include <stdio.h>
+main () {
+    int j = 024, k = 24, L = 0x24, hap;
+    hap = j + k + L;
+    printf("%d, %d, %d, %d\n", j, k, L, hap);
+}
+
+8진수 024 -> 20
+
+16진수 0x24 -> 36
+
+10진수 L -> 24
+
+--> 20, 36, 24, 80
+
+
+3. 
+
+public class Test {
+    public static void main (String []args) {
+	int x = 1;
+	System.out.println(!(x > 0));
+	System.out.println(x > 0 || x < 4);
+	System.out.println(x << 2);
+	System.out.println(x & 2);
+	System.out.println(x % 3);
+    }
+}
+
+-> false
+-> true
+
+0100 -> 4
+
+-> 0
+-> 2
+
+
+4. 
+
+public class Test {
+    public static void main (String []args) {
+	int w = 3, x = 4, y = 3, z = 5;
+	
+	if ((w == 2 | w == y) & !(y > z) & (1 == x ^ y != z)) {
+	    w = x + y;
+	    
+	    if (7 == x ^ y != w) 
+		System.out.println(w);
+
+	    else
+		System.out.println(x);
+	}
+    } else {
+	    w = y + z;
+
+	    if (7 == y ^ z != w) {
+		System.out.println(w);
+
+	    else
+		System.out.println(z);
+    }
+}
+
+
+w = 3
+x = 4
+y = 3
+z = 5
+
+
+-> (w == 2 | 3 == 3) & !(3 > 5) & (1 == 4 ^ 3 != 5)
+  
+0100
+0011
+0111
+
+-> 1 & true & 1
+
+-> 7 = 4 + 3
+
+-> 7 == 4 ^ 3 != 3
+
+-> 1
+
+--> 7

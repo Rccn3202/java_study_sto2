@@ -1,0 +1,22 @@
+빌드 자동화 도구
+
+- 1. 빌드를 포함하여 테스트 및 배포를 자동화하는 도구
+- 2. Agile 같은 지속적인 통합 개발 환경에서 유용하게 활용
+- 3. Ant, Make, Maven, Gradle, Jenkins, 이 중 Jenkins, Gradle 이 가장 대표적
+
+
+Jenkins
+
+- 1. JAVA 기반의 Open Source 형태, Servlet Container 에서 실행되는 서버 기반 도구
+- 2. 빌드 자동화 도구 가장 많이 사용됨
+- 3. SVN, Git 등 대부분의 형상 관리 도구와 연동 가능
+- 4. 친숙한 Web GUI 제공
+
+
+Gradle
+
+- 1. Groovy 를 기반으로 한 오픈 소스 형태의 자동화 도구
+  = Groovy -> Java 에 Python, Ruby, Smaltalk 등 장점 결합한 객체지향 프로그래밍 언어
+
+- 2. Android, Java, C/C++, Python 빌드 가능
+- 3. DSL 을 스크립트 언어로 사용

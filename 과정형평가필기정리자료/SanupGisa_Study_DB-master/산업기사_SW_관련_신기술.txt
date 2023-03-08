@@ -1,0 +1,59 @@
+1. 인공지능 -> 인간지능적인 작업 수행 시스템
+2. 뉴럴링크 -> 일론머스크, 생각 업로드
+3. 딥러닝 -> ANN (Ariticial Neural Network) 기반 기계 학습 기술
+4. 전문가 시스템 -> 의료 진단 업무 지원 컴퓨터 응용 프로그램
+5. 증강 현실 (AR) -> 가상 정보 부가, MR (Mixed Reality)
+6. 블록체인 (BlockChain) -> P2P 네트워크
+7. 분산 원장 기술 (DLT, Distributed Ledged Technology) 
+-> P2P, 지속적으로 갱신되는 디지털 원장
+
+8. Hash -> 고정된 길이의 값이나 키로 변환
+9. 양자 암호키 분배 (QKD; Quantum Key Distribution) 
+-> 1. 양자 통신, 비밀키를 분배하여 관리
+-> 2. 양자 암호키 분배 시스템 설치 및 운용
+
+10. 프라이버시 강화 기술 (PET; Privacy Enhancing Technology) 
+-> 개인정보 침해 위협 방지, 프라이버시 보호 기술
+
+11. 공통 평가 기준 (CC; Common Criteria)
+-> 1. 1999년 6월 18일 ISO 15408 표준 => 정보 보호 제품 평가 기준
+-> 2. 정보화 순기능 역할 보장 = 정보 보호 기능 & 사용 환경 등급 정한 기준
+
+12. 개인정보 영향평가 제도 (PIA; Privacy Impact Assement)
+-> 정보시스템 변경 시 개인, 국민에 미칠 영향에 대해 조사, 분석, 평가하는 제도
+
+13. 그레이웨어 (Grayware) -> 소프트웨어 제공자 = 악의성 X, 사용자 = 악의적일 수도 있는 Adware, Trackware ..
+14. 매시업 (Mashup) -> 구글 맵, 웹에서 제공하는 정보 및 서비스를 이용하여 새로운 SW, DB 등을 만드는 기술
+15. 리치 인터넷 애플리케이션 (RIA; Rich Internet Application) -> 플래시 애니메이션 기술 + 웹 서버 애플리케이션 기술 = 역동적 & 인터렉티브한 웹페이지 제공
+16. 시맨틱 웹 (Semantic Web) 
+-> 1. 사람 대신 컴퓨터가 정보 파악, 가공
+-> 2. 새로운 정보 생성 가능하도록 이해하기 쉬운 의미를 가진 차세대 지능형 웹
+
+17. 증발품 (Vaporwave) -> 계획 (판매, 배포)는 있으나, 아직 실행 안된 소프트웨어 (판매 X, 배포 X)
+18. 오픈 그리드 서비스 아키텍쳐 (OGSA; Open Grid Serivce Architecture)
+-> Grid (여러 곳에 연결할 수 있는 인터넷 망 구조) 상에서 제공 => 개방형 표준
+
+19. 서비스 지향 아키텍처 (SOA; Service Oriented Architecture)
+-> 1. Service 단위나 Component 중심으로 구축하는 정보기술 Architecture
+-> 2. SOA 기반 Application 구성 계층
+    = 표현 (Presentation) 계층
+    = 업무 프로세스 (Biz-Process) 계층
+    = 서비스 중간 (Service Intermediary) 계층
+    = 애플리케이션 (Application) 계층
+    = 데이터 저장 (Persistency) 계층
+
+20. 서비스형 소프트웨어 (Saas; Software as a Service)
+-> 사용자가 필요로 하는 서비스만 이용할 수 있도록 한 SW
+
+21. 소프트웨어 에스크로 (Software Escrow)
+-> SW 개발자 지식재산권 보호, 사용자 저렴한 비용 = 안정적 사용 & 유지보수 => 제 3의 기관이 관리 (Source Program, 기술 정보)
+
+22. 복잡 이벤트 처리 (CEP; Complex Event Processing)
+-> 의미 있는 것만을 추출, 사건 발생 조건 정의하는 Data 처리 방법
+
+23. 디지털 트윈 (Digital Twin)
+-> 1. 현실 속 사물을 SW 로 가상화한 모델
+-> 2. 자동차, 항공, 에너지, 국방, 헬스케어
+-> 3. 물리적인 자산 => (가상화) => SW, 자산 특성 정보 정확히 파악 OK
+-> 4. 모든 과정의 효율성
+ 

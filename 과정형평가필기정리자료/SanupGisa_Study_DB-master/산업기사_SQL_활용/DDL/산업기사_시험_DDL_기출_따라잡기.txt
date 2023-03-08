@@ -1,0 +1,57 @@
+1. ALTER TABLE 학생 ADD 주소 VARCHAR(20);
+
+2. CREATE UNIQUE INDEX 'idx_name' ON student(name) 
+
+<Check>
+3. CREATE TABLE patient
+   id CHAR(5) primary key,
+   name CHAR(10),
+   sex CHAR(1),
+   phone CHAR(20)
+   FOREGIN KEY(ID) REFERENCES docter(doc_id)
+   CONSTRAINT id_fk
+   CHECK (sex='f' or sex='m')
+   CONSTRAINT sex_ck
+
+
+4. CREATE TABLE Instructor
+   id CHAR(5) PRIMARY KEY,
+   name CHAR(15) NOT NULL,
+   dept CHAR(15)
+   FOREIGN KEY(dept) REFERENCES Department(dept)
+	ON DELETE SET NULL,
+	ON UPDATE SET CASCADE
+
+
+5. ALTER TABLE patient ADD job CHAR(20)
+
+6. CREATE VIEW cc(ccid, ccname, instname)
+   AS SELECT Course.id, Course.name, Instructor.name
+   FROM Course, Instructor
+   WHERE Course.instructor = Instructor.id
+
+
+7.  CREATE TABLE 사원
+    사원번호 NUMBER(4) PRIMARY KEY,
+    사원명 VARCHAR2(10),
+    근무지번호 NUMBER(2) FOREING KEY(근무지번호) REFERENCES 근무지(근무지번호)
+     ON DELETE SET CASCADE -> 또는 ON DELETE CASCADE
+
+
+8. CREATE UNIQUE INDEX Stud_idx ON Student(ssn ASC)
+
+<Check>
+9. CREATE DOMAIN 직위 VARCHAR2(10) DEFAULT 사원 CONSTRAINT VALID-직위 CHECK(VALUE IN(사원, 대리, 과장, 부장, 이사, 사장))
+
+10. CRAETE UNIQUE INDEX 직원_name' ON 직원(이름)
+
+11. DROP TABLE 학생 CASCADE
+
+12. CREATE, ALTER, DROP
+
+
+<Check>
+13. CREATE TABLE 사원
+     직원코드 NUMBER NOT NULL,
+     성명 CHAR(10) UNIQUE,
+     직책 CHAR(10) CHECK (직책 IN('사원', '대리', '과장', '팀장')),

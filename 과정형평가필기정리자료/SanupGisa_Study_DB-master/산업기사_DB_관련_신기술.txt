@@ -1,0 +1,53 @@
+I. DB 관련 신기술
+
+1. 빅데이터 (Big Data) -> 정형 or 비정형 데이터 집합, 빅데이터 효과적 분석 = 대응방안 & 수익 연결 => 새로운 가치 창출
+2. 브로드 데이터 (Broad Data) -> 소비자와 상호 작용을 통해 생성, 새로운 가치가 더해진 Data
+3. 메타 데이터 (Meta Data)
+-> 1. Data 정의, 설명해주는 Data = Data Dictionary 내용, Schema
+-> 2. HTML 문서 = Meta Tag 내의 내용이 Meta Data
+
+4. 디지털 아카이빙 (Digital Archiving)
+-> 1. 디지털 정보 자원 장기적 보존
+-> 2. 아날로그 콘텐츠 = 디지털 변환, 압축 및 저장, 디지털 콘텐츠 = 체계적 분류 및 메타 데이터 생성 후 DB 화
+
+5. 하둡 (Hadoop)
+-> 1. 오픈소스, 분산 컴퓨팅 플랫폼 => 구글, 야후에서 적용
+-> 2. 가상화된 대형 스토리지, 거대한 데이터 세트 병렬 처리 => Java SW Framework
+
+6. 맵리듀스 (MapReduce)
+-> 1. 대용량 데이터 분산 처리 Programming 모델, Google 이 원조, 대용량 데이터 처리를 위한 병렬 처리 기법
+-> 2. 연관성 있는 데이터 분류 = Map 작업, 중복 데이터 제거, 원하는 데이터 추출하는 Reduce 작업
+
+7. 타조 (Tajo) -> Hadoop 기반의 분산 데이터 WareHouse (분산되어 있는 데이터를 주체별로 통합, 축적해 놓은 DB)
+8. 데이터 다이어트 (Data Diet) -> 데이터 압축, 중복된 정보 중복 배제, 새로운 기준에 따라 나누어 저장
+9. 데이터 마이닝 (Data Mining) -> Data 에 내제된 변수 사이의 상호관계 규명 = 일정한 패턴 찾아내는 기법
+10. OLAP (Online Analytical Processing)
+-> 1. 다차원 데이터, 통계적인 요약 정보 분석
+-> 2. OLAP 연산 => Roll up, Drill down, Drill Through, Drill Across, Pivoting, Slicing, Dicing
+
+
+II. DB 관련 용어
+1. 스택 (Stack) -> LIFO (후입선출)
+2. 큐 (Queue) -> FIFO (선입선출)
+3. 정규화 (Normalization) -> 함수적 종속성, 관계형 스키마 = 더 작은 속성으로 쪼개기 = 바람직한 스키마의 탄생 과정
+4. 반정규화 (Denormalization) -> 정규화된 데이터 모델 통합, 중복, 분리하는 과정 = 정규화 원칙 위배하는 행위 (의도적으로)
+
+5. 이상 (Anomaly) -> Data 들이 불필요하게 중복 - Relation 조작 시 문제 발생, 삽입 & 삭제 & 갱신 이상
+6. 인덱스 (Index) -> Data Record 빠르게 접근 = <키 값, 포인터> => 쌍으로 구성되는 Data 구조
+7. 뷰 (View) -> 접근 허용 자료 제한적 표시 & 하나 이상의 기본 Table = 이름을 가지는 가상 Table
+
+8. 파티션 (Partition) -> 대용량의 Table or Index => Partition (작은 논리적 단위) 으로 나눔
+9. 관계 대수 -> 원하는 정, 정보 검색 유도 방법 기술, 절차적인 언어
+10. 관계 해석 -> 관계 데이터 연산 표현, E.F.Cood 가 수학의 Predicate Calculus (술어 해석) 기반을 둠
+
+11. 후보 키 (Candidate Key)
+-> 1. 식별자 UID, 기본키로 사용 가능한 속성
+-> 2. Relation 모든 Tuple 유일성 & 최소성
+
+12. 기본 키 (Primary Key) -> 1주 키 (Main Key), 중복 값 불가
+13. 대체 키 (Alternative Key) -> 후보 키 두 개 이상, 기본 키 제외 한 나머지 후보키, 보조키
+14. 슈퍼 키 (Super Key) -> 공통된 속성들의 집합 (한 Relation 내에 있는 속성) 으로 구성된 키, 유일성 만족 O, 최소성 만족 X
+15. 외래 키 (Foreign Key) -> Relation 기본 키 참조하는 소것ㅇ
+16. 개체 무결성 (Entity Integrity) -> 기본 키 Not Null & 중복 값 X
+17. 참조 무결성 (Referetial Integrity) -> 외래 키 Null & 기본 키 값 = 외래 키 값, 참조 불가능한 외래 키 값 가질 수 없음
+

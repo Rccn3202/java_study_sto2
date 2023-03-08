@@ -1,0 +1,24 @@
+1. SELECT 학년, 이름 FROM 학생 WHERE 학년 IN (3, 4)
+
+2. 200, 3, 1
+
+3. SELECT name FROM Product where price IS NULL
+
+4. SELECT DISTINCT name FROM Shop where id IN (SELECT shopid FROM Staff where id = 10)
+
+5. SELECT 이름 FROM 회원 LIKE '이%' ORDER BY 가입일 DESC
+
+6. SELECT pid from Sale where psale >= 10 AND psale <= 20
+
+7. SELECT DISTINCT 과목 FROM 학생 where 학년 >= 3 AND  점수 >= 80
+
+8. SELECT 학생정보.학번, 이름, 결제여부 FROM 학생정보, 신청정보, 결제 WHERE 학생정보.학번 = 신청정보.학번 AND 신청정보.신청번호 = 결제.신청정보 AND 신청과목 = 'OpenGL'
+
+9. 
+- 1. SELECT ID, NAME FROM CUSTOMER
+- 2. SELECT DISTINCT GRADE FROM CUSTOMER
+- 3. SELECT * FROM CUSTOMER ORDER BY ID DESC
+- 4. SELECT NAME FROM CUSTOMER WHERE AGE IS NULL
+- 5. SELECT NAME FROM CUSTOMER WHERE AGE IS NOT NULL
+
+10. SELECT 사원명 FROM 회사원 WHERE 연락번호 IS NOT NULL

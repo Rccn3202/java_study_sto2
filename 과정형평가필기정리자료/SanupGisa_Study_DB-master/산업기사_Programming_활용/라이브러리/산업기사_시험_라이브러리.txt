@@ -1,0 +1,87 @@
+라이브러리
+-> 1. 기본 개념
+   = 자주 사용하는 함수나 데이터들을 미리 만들어 모아 놓은 집합체
+
+-> 2. 분류
+   = 1. 표준 라이브러리
+     => 1. 프로그래밍 언어에 기본적으로 포함되어 있는 라이브러리
+     => 2. 모듈, 패키지
+
+   = 2. 외부 라이브러리
+     => 1. 개발자들이 필요한 기능, 인터넷 등에 공유
+     => 2. 외부 라이브러리 다운받아 설치한 후, 사용
+
+
+C 언어의 대표적인 라이브러리
+-> 1. stdio.h
+   = 1. 데이터 입출력
+   = 2. pritnf, scanf, fprintf, fscanf, fclose, fopen
+
+-> 2. math.h
+   = 1. 수학 함수
+   = 2. sqrt, pow, abs
+
+-> 3. string.h
+   = 1. 문자열 처리
+   = 2. strlen, strcpy, strcmp
+
+-> 4. stdlib.h
+   = 1. 자료형 변환, 난수 발생, 메모리 할당
+   = 2. atoi, atof, srand, rand, malloc, free
+
+-> 5. time.h
+   = 1. 시간 처리
+   = 2. time, clock
+
+
+Java 의 대표적인 라이브러리
+-> 1. java.lang
+   = 1. 인터페이스, 자료형, 예외 처리 기능 제공
+   = 2. import 문 없이 사용 가능
+   = 3. String, System, Process, Runtime, Math, Error
+
+-> 2. java.util
+   = 1. 날짜 처리, 난수 발생, 복잡한 문자열 처리
+   = 2. Date, Calendar, Random, StringTokenizer
+
+-> 3. java.io
+   = 1. 파일 입출력 기능 및 프로토콜 제공
+   = 2. InputStream, OutputStream, Reader, Writer
+
+-> 4. java.net
+   = 1. 네트워크
+   = 2. Socket, URL, InetAddress
+
+-> 5. java.awt
+   = 1. UI
+   = 2. Frame, Panel, Dialog, Button, Checkbox
+
+
+Python 의 대표적인 라이브러리
+-> 1. 내장 함수
+   = 1. 기본적인 인터페이스, import 문이나 클래스명 없이 사용 가능
+   = 2. abs(), slice(), pow(), print()
+
+-> 2. os
+   = 1. 운영체제
+   = 2. getcwd(), chdir(), system()
+
+-> 3. re
+   = 1. 고급 문자열 처리
+   = 2. findall(), sub()
+
+-> 4. math
+   = 1. 복잡한 수학 연산
+   = 2. cos(), log()
+
+-> 5. random
+   = 1. 무작위 선택
+   = 2. choice(), sample(), random(), randrange()
+
+-> 6. statistics
+   = 1. 통계 값 산출
+   = 2. mean(), median(), variance()
+
+-> 7. datetime
+   = 1. 날짜와 시간 조작
+   = 2. today(), date(), strftime()

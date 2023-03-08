@@ -1,0 +1,156 @@
+1. SubType
+- 1. SubType 은 Key Entity Level 안에 내용물을 저장할 때 써야함
+- 2. 공통되는 ENTITY 와 공통되는 RELATIONSHIP 을 가지는 ENTITY 는 SUB-TYPE 을 사용
+  = 1. SUB 집합 (SUB-TYPE 을 사용하는 ENTITY)
+     -> 1. SUB 집합에서만 관리하는 RelationShip 은 SUB 집합에서부터 RelationShip 선이 그려짐
+     -> 2. SUB 집합뿐만 아니라 전체적으로 관리하는 RelationShip 은 전체적으로 관리하는 ENTITY (공통되는 ENTITY) 로부터 RelationShip 선이 그려짐
+
+  = 2. Super Type 과 Sub-Type 의 관계
+     -> 1. 1:1 관계 아님 (Example -> 사원, 정규직, 임시직)
+         => 1. 사원은 정규직, 임시직이 될 수 있음
+         => 2. 정규직이라는 사원이 있고, 임시직이라는 사원이 있음
+
+     -> 2. 구분 코드로 표현
+     -> 3. 임의의 전체 집합은 하나 이상 두 개 이상의 부분 집합을 가져야 함
+         => 부분 집합이 하나 밖에 없을 경우, 서로 같은 Level Depth 에 속함
+
+     -> 4. Super Type 에는 공통 Attribute, 공통 Relation
+     -> 5. SubType 은 자기 자신 만의 Attribute 를 가지거나, 혹은 독립적인 Relationship 을 가질 수도 있음
+         => 1. SubType 안에 아무런 독립적인 Attribute 가 없어도 Sub-Type 이 될 수도 있음
+         => 2. 반드시 독립적인 Relation 을 가지고 있지 않아도 됨
+
+     -> 6. 자기 자신 만이 갖는 Attribute, 또는 RelationShip 이 전혀 없어도 SubType 으로 표현할 수도 있음
+         => 1. 일반적으로 Attribute 로 처리하는 것이 좋음
+         => 2. 필요에 따라 독립적인 RelationShip, Attribute 가 없더라도 Readability (시각적으로 전달하는 것) 를 위해서 어떤 개체들의 모임인 것을 가시적으로 보여줄 수 있음\
+         => 3. 독립적인 Attribute 가 없더라도 그려둘 수 있음
+
+     -> 7. SuperType 의 모든 Instance 는 SubType 중 단 하나와 반드시 연결되어야 함
+         => SuperType 에 있는 하나의 개체는 반드시 SubType 한 곳에만 속해야 함
+     
+     -> 8.  SubType 칸 안에 공통 부모가 존재해선 안됨
+
+  = 3. 기타 SubType
+     -> Example
+         => 1. SuperType Record -> 100개
+         => 2. SubType Record -> 2개
+         => 3. 다 합해서 100개 (이상) 있어야 함 -> 조건 부합
+
+2. SubType 의 자세한 특징
+- 1. SubType 은 더 분할 될 수 없음
+- 2. 보통 2 ~ 3 단계로 분할하는 것이 적당함 (Example 하단)
+  = 1. 항공기
+  = 2. 비행기
+     -> 1. 무동력기
+     -> 2. 동력기
+         => 1. 프로펠러기
+         => 2. 제트기
+  
+  = 3. 헬리콥터
+
+3. 이런 경우의 SubType 정의 (공집합)
+- 1. 새로운 개체를 추가
+  = Instance 추가
+     -> 1. A Type, B Type 에서 쓰일 데이터를 하나씩 추가
+     -> 2. Example
+         => 1. 연예인 > 가수 & 탤런트 & 기타
+         => 2. 가수 A, 탤런트 A 와 같이 새롭게 추가
+         => 3. Record 가 하나 늘어남
+         => 4. 연예인 영역의 집합에 정의가 바뀜
+         => 5. 사람 한 명이 하나의 개체가 아니며, 그 사람의 직업이 한데 그 집합이 되어 버림
+    
+    -> 3. 집합의 본질을 바꿀 수 있음
+    -> 4. Instance 늘였는데 문제가 없을 때 새로운 Instance 를 추가 (새로운 개체 추가) 해도 됨 
+
+- 2. 새로운 SubType 을 추가
+  = 1. 특정 Attribute 가 겹치는 ENTITY 추가
+    -> 1. A Type, B Type A+B Type
+    -> 2. Example
+        => 1. 연예인 > 가수 & 탤런트 & 가수+탤런트
+        => 2. 가수 겸 탤런트인 A => 가수 + 탤런트 A
+  
+  = 2. Relationship 에 변화가 발생하지 않음
+  = 3. OR, IN, BETWEEN 처리 발생
+  = 4. SELECT * FROM 연예인 WHERE SUM_TYPE IN ('2', '3');
+
+4. SubType 선정기준
+- 1. SubType 은 한 가지 이상 존재할 수 없음
+  = 1. Example
+     -> 1. 사원 Entity
+         => 1. 내근사원
+         => 2. 설계사
+         => 3. 임시직
+  
+     -> 2. (사원 Entity 를 이어서) Example
+         => 1. 기혼자
+         => 2. 미혼자
+
+     -> 3. (사원 Entity & 기혼 or 미혼 Entity 를 이어서) Example
+         => 1. 남
+         => 2. 여
+
+  = 2. 여러 차원의 다른 종류의 SubType 을 하나의 Entity 가 가질 경우
+     -> 1. 2차원이나 3차원의 형태까지 도면이나 그림으로 표현할 수 있음
+     -> 2. 4차원 이상의 차원으로 넘어가면 도면이나 그림으로 표현하는 것이 불가능해짐
+
+- 2. 선정기준 정하기
+  = 1. 그 SubType 이 고유한 속성을 가질 경우
+  = 2. 독자적인 관계를 가질 경우
+     -> 1. 내근 사원만 특정 Entity 를 가짐 (Example 1)
+     -> 2. 설계사만 특정 Entity 를 가짐 (Example 2)
+
+  = 3. 나머지 후보들은 속성에서 표현
+     -> 1. Attribute 로 표현
+     -> 2. 괄호로 표현 후, SubType 의 종류를 점을 찍고 작성
+     -> 3. Example -> 성별 - 남, 여
+
+  = 4. SubType 개수가 너무 많은 경우 (수십 개가 넘어가는 경우)
+     -> 1. 다 쓰지 말고, 중요한 것 몇 개 집어서 ... 하고 닫기
+     -> 2. 중요한 것은 일반적인 SubType 형의 모양으로 그리고, 중요하지 않은 것은 `...` 으로 표현
+
+5. DW (Data Warehouse)
+- 1. Multi SubType 을 확대해서 만든 개념
+- 2. 여러 개의 SubType 을 가지고 있더라도, 그 하나의 개체는 아무런 영향을 끼치지 않음
+- 3. 육면체 도형을 가로, 세로, 높이 방향으로 잘라도 계속해서 작은 육면체 모양의 도형이 계속 나옴
+ 
+6. 관계의 통합 (Relation 의 통합)
+- 1. 배타적 관계 (Exclusive RelationShip) 모델 (or Arc (아크))
+  = 어떤 Entity 가 두 개 이상의 다른 Entity 의 합집합하고 관계 맺음
+     -> 1. 어떤 하나의 Entity 가 두 개 이상의 Entity 와 논리적인 합집합하고 관계 맺음
+     -> 2. Relation 두 개를 끈으로 묶었다는 뜻
+
+- 2. Arc (아크) 관계
+  = 1. Arc (아크) 내에 있는 RelationShip 은 보통 동일
+     -> 1. 한 선은 직선인데 다른 한 선은 점선은 논리적으로 말이 됨
+         => 점선이면 같이 점선, 직선이면 같이 직선
+     
+     -> 2. 각각을 보면 당연히 점선인데, 묶는 순간 직선으로 변하는 것 (묶는 순간 반드시 있어야 함)
+         => 1. 데이터 100 개 (Example) 중 98 개는 직선으로 연결되어 있지만, 나머지 2개는 연결 안되어 있음
+         => 2. 나머지 2개에 관해서는 제 3의 집합을 만들어서 직선으로 연결 된 데이터 98 개처럼, 같이 직선으로 표현
+         => 3. 나머지 2개는 가상의 점선 집합일 수 있음
+         => 4. Relation 이 언제 어떻게 채워지는지, A 에서 와서 채워지는지, B 에서 와서 채워지는지, 아니면 상수 값으로 채워지는지에 대해서 정확하게 찾아내야 함
+
+  = 2. Arc 내에 있는 RelationShip 은 항상 Mandatory 거나 Optional 이어야 함
+  = 3. Arc 는 반드시 하나의 ENTITY 에만 속해야 함
+     -> 하나의 Arc 가 여러 ENTITY 를 가질 수 없음
+
+  = 4. 어떤 ENTITY 는 다수의 Arc 를 가질 수 있음
+     -> 1. 지정된 RelationShip 은 단 하나의 Arc 에만 사용되어야 함
+         => 1. 몸통을 묶으면 Relation 을 묶을 필요 없음
+         => 2. 몸통이 떨어지면 Relation 이 묶어줘야 함
+     
+     -> 2. Relation 통합인 Exclusive 할 것이 아닌, 몸통 통합인 SubType 통합이 정답
+         => 1. 몸통을 통합하는 것이 가능할 경우, 몸통을 통합하는 것이 훨씬 더 유리
+         => 2. 몸통을 통합하는 것이 힘들거나 불가능할 경우, Relation 통합 (Exclusive) 이라도 해줘야 함
+
+7. 배타적 관계 모델의 각도
+- 1. 연결되어 있다는 것은 곡선 간 중간에서 만나는 곳을 `점`으로 표현
+- 2. 연결되어 있지 않은 것은 곡선 간 중간에서 만나는 곳을 그냥 `직선`으로 표현
+- 3. 잘못 된 사용의 예시
+  = 1. 받는 ENTITY 는 하나이고, 주는 ENTITY 는 2개 (또는 2개 이상) 이어야 함
+     -> 올바른 답 => 주는 ENTITY 는 하나이고, 받는 ENTITY 는 2개 (또는 2개 이상) 이어야 함
+
+  = 2. 주는 ENTITY 는 하나이고, 받는 ENTITY 는 없음 (빼빼로데이 때 빼빼로 선물은 줬지만 받은 적인 없는 그런 슬픈 경험..ㅠㅠ)
+     -> 올바른 답 => 주는 ENTITY 는 하나이고, 받는 ENTITY 는 2개 (또는 2개 이상) 이어야 함
+
+  = 3. SubType 에서 주는 ENTITY 와 공통 ENTITY 에서 주는 ENTITY 각각 하나이고, 받는 ENTITY 는 없음
+     -> 올바른 답 => 주는 ENTITY 는 하나이고, 받는 ENTITY 는 2개 (또는 2개 이상) 이어야 함

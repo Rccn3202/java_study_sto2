@@ -1,0 +1,195 @@
+1. 뉴럴링크
+
+2. 
+
+#include <stdio.h>
+
+char Stack[5];
+int Top = -1;
+
+push (int i) {
+    if (++Top >= 5) printf("overflow\n");
+    esle Stack[Top] = i;
+}
+
+pop () {
+    if (--Top < -1) 
+        printf("underflow\n");
+}
+
+prnt () {
+   for (int i = 0; i <= Top; i++) printf("%c", Stack[i]);
+}
+
+main () {
+    push('A');
+    push('B');
+    pop();
+    push('C');
+    pop();
+    push('D');
+    push('F');
+    prnt();
+}
+
+
+- 1. 'A'
+- 2. 'A', 'B'
+- 3. 'A'
+- 4. 'A', 'C'
+- 5. 'A',
+- 6. 'A', 'D'
+- 7. 'A', 'D', 'F'
+- 8. prnt() -> A, D, F
+
+-> A, D, F
+
+
+<CRUD 분석>
+3. CRUD 매트릭스
+
+
+4. <81> 
+- 1. 80
+- 2. 수리2
+
+
+5. 
+
+int num[] = {14, 42, 35, 26, 8};
+
+switch (i%5) {
+  case 1: -> printf("A"); break;
+  case 2: -> printf("B"); break;
+  case 3: -> printf("C"); break;
+  case 4: -> printf("D"); break;
+  default: printf("\n");
+}
+
+
+- 1. 14 % 5 = 2..4 = D;
+- 2. 42 % 5 = 8..2 = b;
+- 3. 35 % 5 = 7..0 = 
+- 4. 26 % 5 = 5..1 = A;
+- 5. 8 % 5 = 1..3 = C;
+
+->
+DB
+
+AC;
+
+
+6. Java, C++, Smalltalk
+
+7. Jenkins
+
+8.
+
+ary = list(range(10))
+sum = 0
+
+for i in ary:
+    if i % 2 == 1:
+        sum += i
+print(sum)
+
+
+- 1. ary.size = [], ary 0 ~ 9 (10)
+- 2. 1, 3, 5, 7, 9
+- 3. 25
+
+-> 25
+
+
+<REVOKE ALL ON MEMBERS FROM USER01 CASCADE>
+9. REVOKE GRANT OPTION FOR ON MEMBERS FROM USER01 CASCADE;
+
+<SNMP>
+10. ISO 통신표준규약
+
+11. 페이퍼 프로토타입
+
+<네트워크 슬라이싱>
+12. 매시 네트워크
+
+<DB 논리적 구조를 변경시키더라도 응용 프로그램은 변경되지 않는 성질>
+13. 데이터베이스의 내용이 바뀌더라도 응용 프로그램의 논리적 독립성은 바뀌지 않는 것
+
+14. 
+
+void func(char* str) {
+    int i = 1, cnt = 0;
+    while (cnt++ < 5) {
+        if (i > 7) i = i - 4;
+        printf("%c", *(str + i));
+        i = i + 3;
+    }
+}
+
+main() {
+    char str[] = "ABCDEFGH";
+    func(str);
+}
+
+- 1. str = "ABCDEFGH";
+- 2. *(str + 1) = B;
+- 3. i = 1 + 3 = 4;
+- 4. *(str + 4) = E;
+- 5. i = 4 + 3 = 7;
+- 6. *(str + 7) = H;
+
+- 7. func(BEH);
+
+-> BEH;
+
+
+15.
+
+- 1. 개념적 설계
+- 2. 논리적 설계
+- 3. 물리적 설계
+
+
+<오류 예측 검사>
+16. 
+
+<테스트 하네스 도구>
+17. 단위 테스트
+
+18. 
+
+<5, 8, 7, 4, 1>
+void func(int *a) {
+   int x = 1;
+   
+   for (int i = 4; i >= 0; i += x) {
+       *(a + i) += i;
+       
+       if (i >= 4) {
+           x = -1;
+       }
+   }
+}
+
+main() {
+    int arry[] = {1, 2, 3, 2, 1};
+    func(arry);
+
+    for (int i = 4; i >= 0; i--)
+        printf("%d ", arry[i]);
+}
+
+- 1. arry = {1, 2, 3, 2, 1};
+- 2. for (int i =4; i >= 0; i = i + 1)  -> i = 5;
+- 3. *(a + i) = *(a + i) + i; -> *(a + i) 의 현재 가리키고 있는 Index 위치 -> 5 
+- 4. x = -1; 
+
+-> 1, 2, 3
+
+19. 
+
+SELECT DISTINCT 취미 FROM 취미 WHERE 회원ID = (SELECT 회원ID FROM 회원정보 WHERE 나이 < 40);
+
+
+20. <NEW 기법>
+

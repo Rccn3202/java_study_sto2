@@ -1,0 +1,15 @@
+1. SELECT 학과, COUNT(학과) AS 학과별튜플수 FROM 학생 GROUP BY 학과
+
+2. SELECT 과목이름, MIN(점수) AS 최소점수, MAX(점수) AS 최대점수 FROM 성적 GROUP BY 과목이름 HAVING COUNT(점수) >= 90
+
+3. SELECT 이름, 전공, 신청과목 FROM 학생정보, 신청정보 WHERE 학생정보.학번 = 신청정보.학번 AND 신청과목 = "Java" GROUP BY 학번, 이름, 신청과목 HAVING '컴퓨터 공학'
+
+4. 1
+
+5. SELECT pid FROM Sale WHERE pid IN (SELECT id FROM PRODUCT WHERE NAME LIKE 'USB%')
+
+6. SELECT 소속도시, AVG(매출액) FROM 지점정보 WHERE 매출액 > 1000 GROUP BY 매출액 HAVING COUNT(*) >= 3
+
+7. SELECT 장학내역, 장학금, ROW_NUMBER() OVER (PARTITION BY 장학내역 ORDER BY 장학금 DESC) AS NUM FROM 장학금
+
+8. SELECT 학과, 장학내역, SUM(장학금) AS 장학금합계 FROM 장학금 GROUP BY ROLLUP(학과, 장학내역)

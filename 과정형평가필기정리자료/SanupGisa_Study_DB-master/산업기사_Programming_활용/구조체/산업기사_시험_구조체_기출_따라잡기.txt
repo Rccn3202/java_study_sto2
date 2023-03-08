@@ -1,0 +1,8 @@
+a[] = {"Kim", 28, "Lee", 38, "Park", 42, "Choi", 31}
+
+struct inst* p;
+p = a;  -> "Kim"
+p++;
+
+printf("%s\n", p->name); -> "Lee"
+printf("%d\n", p->age); -> 38

@@ -1,0 +1,36 @@
+구조체
+1. 구조체의 정의
+= 1. int 나 char 같은 자료형을 하나 만드는 것을 의미함
+= 2. Example
+  -> struct sawon {
+	char name[10];
+	char jikwi[10];
+	int pay;
+     }
+
+
+2. 구조체 변수의 선언
+= 1. 구조체 변수를 사용하려면 먼저 정의한 구조체에 대한 변수를 선언해야 함
+= 2. Example
+  -> struct sawon ansan, *seoul;
+
+
+3. 구조체 멤버의 지정
+= 1. '.' 의 의한 지정 
+  -> 1. 구조체 일반 변수를 이용해 구조체 멤버를 지정할 때
+  -> 2. Example 
+     => 1. ansan.name = "김한국";
+     => 2. ansan.jikwi = "대리";
+     => 3. ansan.pay = 4000000;
+
+= 2. '->' 에 의한 지정
+  -> 1. 구조체 포인터 변수를 이용해 구조체 멤버를 지정할 때
+  -> 2. Example 
+     => 1. seoul->name = "홍길동":
+     => 2. seoul->jikwi = "과장";
+     => 3. seoul->pay = 5000000;
+
+  -> 3. Example2 (일반 포인터 변수처럼 * 를 사용항 멤버 지정 가능)
+     => 1. (*seoul).name = "홍길동";
+     => 2. (*seoul).jikwi = "과장";
+     => 3. (*seoul).pay = 5000000;

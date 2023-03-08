@@ -1,0 +1,35 @@
+1. 고가용성 -> 장기간 운영 = (장애 발생) = 즉시 다른 시스템으로 대체 가능한 환경을 구축하는 메커니즘
+2. 3D Printing (Three Dimension Printing) -> 평면 X, 실체 물체, 얇은 두께로 하나하나 쌓아 하나의 형태를 만드는 기술
+3. 4D Printing (Fourth Dimension Printing) -> 스스로 형태 변화 또는 제조됨 => 자가 조립 (Self-Assembly) => 3D Printing (제품)
+4. RAID (Reduntant Array of Inexpensive Disk, Redundant Array of Independent Disk)
+-> Data Block 을 서로 다른 Disk 들에 분산 저장 = 동시 읽기 & 쓰기 가능 => 디스크 속도 매우 향상
+
+5. 4K 해상도 
+-> 1. 차세대 고화질 모니터의 해상도
+-> 2. 가로 픽셀 3840, 세로 픽셀 2160 영상의 해상도 => Full HDTV (1920 * 1080) 의 가로 & 세로 2배, 총 4배 (초고화질 영상)
+
+6. 앤 스크린 (N-Screen) -> 서로 다른 단말기에서 동일한 콘텐츠 자유롭게 이용
+7. 컴패니언 Screen (Companion Screen) 
+-> 1. TV 방송 내용 + 추가적인 기능 수행 (스마트폰, 태블릿PC)
+-> 2. 앤 스크린 (N Screen) 의 종류, 세컨드 스크린 (Second Screen)
+
+8. 신 클라이언트 PC (Thin Client PC) -> 주변 장치 X, 기본적인 메모리 O = Server & Network 로 운용되는 PC => Server 기반 Computing 과 관계 깊음
+9. 패블릿 (Phablet) -> Phone + Tablet, Tablet 기능 포함한 5인치 이상의 대화면 SmartPhone
+10. C형 USB (Univeral Serial Bus Type-C, USB Type-C, USB-C)
+-> 1. 범용 인터페이스 규격인 USB (Universal Serial Bus) 표준 중 하나
+-> 2. 사이즈 => A형 > C형, 24핀 - 위아래 구분없이 어느 방향으로든 연결 가능
+
+11. 멤스 (MEMS; Micro-Electro Mechanical Systems)
+-> 초정밀 반도체 제조 기술, 기계 구조 미세 가공 = 전기 기계적 동작을 할 수 있도록 한 초미세 장치
+
+12. 트러스트존 기술 (TrustZone Technology)
+-> 일반 구역 (하나의 Processor, 일반 Application 처리), 보안 구역 (보안 Application) 으로 분할 및 관리하는 HW 기반의 보안 기술
+
+13. 엠디스크 (M-DISC, Millennial DISC)
+-> 1. 한 번의 기록 = 자료 영구 보존 가능한 광 저장장치
+-> 2. 디스크 표면 무기물층에 레이저 이용 = 자료 조각해서 기록 
+-> 3. 외부 요인 영향 X
+
+14. 멤리스트 (Memristor)
+-> 1. Memory + Register, 전류의 방향과 양 등 기존의 경험을 모두 기억하는 특별한 소자
+-> 2. Register, Capacitor, Inductor 에 이어 네 번째 전자회로 구성 요소

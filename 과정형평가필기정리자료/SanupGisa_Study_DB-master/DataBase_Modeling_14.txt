@@ -1,0 +1,55 @@
+1. M : M Relationship 해소
+- 1. 실세계의 업무 중 대부분은 M : M 관계
+- 2. Key Entity 와 Key Entity 간에는 대부분 M : M 관계
+- 3. 지속적으로 발생되는 대다수의 ENTITY 는 M : M 관계
+- 4. 만약, 어떤 ATTRIBUTE 가 RELATIONSHIP 을 나타내고 있다면 그 RELATIONSHIP 은 분해되어야 함
+- 5. M : M Relationship 은 새로운 교차 (Intersection) ENTITY 를 추가하여 M : 1 관계로 바뀜
+
+2. M : M 관계 해결 원리
+- 1. M : M 관계 정의
+  = 1. 특정 ENTITY (ENTITY A) 가 다른 ENTITY (ENTITY A 와 ENTITY C) 와 서로 1 : M 관계를 맺고 있음
+  = 2. ENTITY A 에도 `M` 이 있고, ENTITY B 에도 `M` 이 있으면 두 개의 M 이 얽혀있는 관계를 `M : M 관계` 라고 정의
+
+- 2. X 집합의 `A`에 대응되는 Y집합을 찾는 방법
+  = 1. X 집합 (A, B, C)
+  = 2. Y 집합 (10, 20, 30)
+  = 3. X 집합과 Y 집합의 결합된 RECORD 목록 (A 10, A 20, C 10, B 20, C 30)
+  = 4. 먼저 `A` 를 찾기 (X, Y 결합된 RECORD 목록 중, `X` ENTITY 부분에서 찾기)
+  = 5. 10 으로 Y 집합을 찾기 (X, Y 결합된 RECORD 목록 중, 찾고자 하는 `Y` ENTITY 와 일치한 데이터인 Y집합 안에서 RECORD 값을 찾기)
+
+- 3. Y 집합의 `20` 에 대응되는 X집합을 찾는 방법
+  = 1. X 집합 (A, B, C)
+  = 2. Y 집합 (10, 20, 30)
+  = 3. X 집합과 Y 집합의 결합된 RECORD 목록 (A 10, A 20, C 10, B 20, C 30)
+  = 4. 먼저 `20`을 찾기 (X, Y 결합된 RECORD 목록 중, `Y` ENTITY 부분에서 찾기)
+  = 5. `A`로 X 집합을 찾기 (X, Y 결합된 RECORD 목록 중, 찾고자 하는 `X` ENTITY 와 일치한 데이터인 X집합 안에서 RECORD 값을 찾기)
+
+- 4. 데이터 모델로 표현
+  = 1. Relation ENTITY => X, Y 결합된 RECORD 목록
+  = 2. M : M 관계에 있을 때에는 Relation ENTITY 가 만들어지면, 두 집합 (X 집합, Y 집합) 사이에 생겼던 모든 관계들을 Keeping (보존) 가능
+  = 3. M : M 관계는 Relation ENTITY 를 통해 해소가 됨
+
+3. M : M관계 특징
+- 1. M : M 관계의 Default => 무조건 점선으로 표현
+- 2. M : M Relation 이 풀린 후, Relation Entity 가 만들어지면, 각 집합에서 Relation Entity 로 연결되는 선을 직선으로 표현 (사랑의 스튜디오)
+- 3. X 집합에도 있고, Y 집합에도 있어서 `짝(Pair) 이 맞는 데이터만 들어오기 때문에` (`성공한 짝(Pair) 만 들어오기 때문에`) 당연히 선을 직선으로 표현
+
+4. M : M Relationship 작도법
+- 각 ENTITY 를 배치 후, 서로의 RELATIONSHIP 을 연결할 때, 사선이 안생기도록 잘 배치하여 작도
+
+5. M : M Relationship 의 UID
+- UID 생성 경우
+  = 1. 외부에서 가져온 것 + 배치일
+  = 2. 외부에서 가져온 것만으로 생성
+  = 3. 새로운 UID
+
+6. ATTRIBUTE 가 없는 Intersection Entity
+- 1. ATTRIBUTE 가 하나도 없는 ENTITY 종류 (종속 Entity - Dependent Entity)
+  = 1. Relation ENTITY 
+  = 2. Intersection ENTITY 
+  = 3. Association ENTITY
+
+- 2. ATTRIBUTE 가 없는 Intersection Entity 는 양쪽의 상호 참조사항만 가짐
+- 3. Intersection ENTITY 는 `ENTITY 는 반드시 Attribute 를 가져야 함` 는 원칙을 지키지 않을 수 있음
+- 4. 이런 ENTITY 는 항상 UID Bar 에 의해 UID 가 지정됨
+

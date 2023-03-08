@@ -1,0 +1,91 @@
+SELECT 일반 형식
+-> 1. 기본 구조
+    => 1. SELECT [PREDICATE] [테이블명.]속성명 [AS 별칭][, [테이블명.]속성명, ...]
+	[, 그룹함수(속성명) [AS 별칭]]
+	[, WINDOW 함수 OVER (PARTITION BY 속성명1, 속성명2, ...
+		         ORDER BY 속성명3, 속성명4, ...) [AS 별칭]]
+	FROM 테이블명[, 테이블명, ...]
+	[WHERE 조건]
+	[GROUP BY 속성명, 속성명, ...]
+	[HAVING 조건]
+	[ORDER BY 속성명 [ASC | DESC]];
+
+    => 2. WINDOW 함수
+         = 1. PARTITION BY -> WINDOW 함수의 적용 범위가 될 속성을 지정
+         = 2. ORDER BY -> PARTITION 안에서 정렬 기준으로 사용할 속성을 지정
+
+
+-> 2. 그룹함수 (그룹 별 속성의 값 집계)
+    => 1. COUNT -> 그룹 별 튜플 수
+    => 2. SUM -> 그룹 별 합계
+    => 3. AVG -> 그룹 별 평균
+    => 4. MAX -> 그룹 별 최대 값
+    => 5. MIN -> 그룹 별 최소 값
+    => 6. STDDEV -> 그룹 별 표준 편차
+    => 7. VARIANCE -> 그룹 별 분산
+    => 8. ROLLUP -> 그룹 별 소계, n + 1, 하위 레벨에서 상위 레벨 순으로 데이터 집계 됨
+    => 9. CUBE -> 모든 조합의 그룹 별 소계, 2^n, 상위레벨에서 하위 레벨 순으로 데이터 집계 됨
+
+
+-> 3. WINDOW 함수
+    => 1. ROW_NUMBER() -> 윈도우별로 각 레코드에 대한 일련번호 반환]
+         = ROW_NUMBER() OVER (PARTITION BY 속성명1 ORDER BY DESC)
+
+    => 2. RANK() -> 윈도우별 순위 반환, 공동 순위 반영
+    => 3. DENSE_RANK() -> 윈도우별 순위 반환, 공동 순위를 무시하고, 순위를 부여
+
+
+-> 4. WINDOW 함수 이용 검색
+    => Example
+         = 1. <상여금> 테이블에서 '상여내역' 별로 '상여금' 에 대한 일련 번호 (내림차순, 속성명 = 'NO')
+	-- SELECT 상여내역, 상여금 ROW_NUMBER() OVER (PARTITION BY 상여내역 DESC) AS NO FROM 상여금
+
+         = 2. <상여금> 테이블에서 '상여내역' 별로 '상여금' 에 대한 순위 (내림차순, 속성명 = '상여금순위', RANK() 함수 이용)
+	-- SELECT 상여내역, 상여금 RANK() OVER (PARTITION BY 상여내역 DESC) AS 상여금순위 FROM 상여금
+
+
+-> 5. 그룹 지정 검색 (Group By)
+    => Example
+         = 1. <상여금> 테이블에서 '부서' 별로 '상여금' 의 평균
+	-- SELECT 부서, AVG(상여금) AS 평균 FROM 상여금 GROUP BY 부서
+
+         = 2. <상여금> 테이블에서 부서별 튜플 수 검색
+	-- SELECT 부서, COUNT(*) AS 사원 수 FROM 상여금 GROUP BY 부서
+
+         = 3. <상여금> 테이블에서 '상여금' 이 100 이상인 사원이 2명 이상인 '부서' 의 튜플 수
+	-- SELECT 부서, COUNT(*) AS 사원 수 FROM 상여금 WHERE 상여금 >= 100 GROUP BY 부서 HAVING COUNT(*) >= 2
+
+         = 4. <상여금> 테이블의 '부서', '상여내역', '상여금' 에 대해 부서별 상여내역 별 소계와 전체 합계 검색 
+	   (속성명 = '상여금합계', ROLLUP 함수 이용)
+	-- SELECT 부서, 상여내역, SUM(상여금) AS 상여금합계
+	    FROM 상여금
+	    GROUP BY ROLLUP(부서, 상여내역)
+
+         = 5. <싱야금> 테이블이 '부서', '상여내역', '상여금' 에 대해 부서별 상여내역 별 소계와 전체 합계 검색
+	   (속성명 = '상여금합계', CUBE 함수 이용)
+	-- SELECT 부서, 상여내역, SUM(상여금) AS 상여금합계
+	    FROM 상여금
+	    GROUP BY CUBE(부서, 상여내역)
+
+
+-> 6. 집합 연산자를 이용한 통합 질의
+    => 1. 표기 형식
+         = SELECT 속성명1, 속성명2, ...
+	FROM 테이블명
+	UNION | UNION ALL | INTERACT | EXCEPT
+	SELECT 속성명1, 속성명2, ...
+	FROM 테이블명
+	[ORDER BY 속성명 [ASC | DESC]];
+
+    => 2. 집합 연산자의 종류 (통합 질의의 종류)
+         = 1. UNION -> 두 SELECT 문의 조회 결과 통합하여 모두 출력, 중복된 행은 한 번만 출력 --> 합집함
+         = 2. UNION ALL -> 두 SELECT 문의 조회 결과 통합하여 모두 출력, 합집합, 중복된 행도 그대로 출력 --> 합집합
+         = 3. INTERSECT -> 두 SELECT 문의 조회 결과 중 공통된 행만 출력 --> 교집합
+         = 4. EXCEPT -> 첫 번째 SELECT 문의 조회 결과에서 두 번째 SELECT 문의 조회 결과를 제외한 행 출력 --> 차집합
+
+    => 3. Example
+         = 1. <사원> 테이블과 <직원> 테이블을 통합하는 질의문 (단, 같은 레코드가 중복되어 나오지 않게 출력)
+	-- SELECT * FROM 사원 UNION SELECT * FROM 직원
+
+         = 2. <사원> 테이블과 <직원> 테이블에 공통으로 존재하는 레코드만 통합하는 질의문
+	-- SELECT * FROM 사원 INTERSECT SELECT * FROM 직원

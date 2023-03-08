@@ -1,0 +1,19 @@
+Parent obj = new Child();
+System.out.print(obj.compute(4));
+
+
+compute(4)
+compute(3) - compute(1)
+compute(2) - compute(0)
+compute(1) - compute(-1)
+
+4
+3
+2
+1
+0
+-1
+0
+1
+
+--> 1

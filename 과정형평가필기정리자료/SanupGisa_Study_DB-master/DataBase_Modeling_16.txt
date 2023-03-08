@@ -1,0 +1,115 @@
+1. 순환관계 처리 SQL (JOIN 과 비교)
+- 1. 순전개시는 P_ID Index 필요
+  = 1. 효율적인 Index 사용을 위해 NULL 보다 SPACE 가 유리
+  = 2. LPAD
+     -> 1. LEVEL 에 따라 Left 부터 Padding 이 일어남
+     -> 2. 책의 목차 구조처럼 Data 들을 보여줌
+
+- 2. 역전개시는 ID Index 필요
+
+2. M:M 계층 구조와 코드 부여 방법
+- 1. 동일한 개체가 여러 개의 Code 를 가지게 됨
+  = 1. N 계층이 될 때에는 현재 실행되고 있는 Data 를 잠시 Save 한 후, 다른 Data 를 실행해야 함
+  = 2. Program 의 Depth (깊이) 가 몇 단계로 구성되어 있는지 잘 모를경우, Logic 을 만들어서 구축 (C언어 or COBOL)
+  = 3. SQL 을 사용할 경우, Data 를 잠시 Save 및 다른 Data 를 실행할 필요 없이 CONNECT BY START WITH 로 스스로 모든 Data 들을 보여줌
+
+- 2. 같은 개체이지만 구분이 불가능
+- 3. Recursive 구조의 Data 를 만들 때, Key Label 를 Data Source 에서 빼면 안됨
+- 4. 반드시 넣는 방법으로 관리하는 것이 좋음
+
+3. 순환관계 처리 SQL (형태별)
+- 1. 소 그룹별 전행 (순환) 전개
+  = 1. 구조는 같지만, 전혀 상관관계가 없는 관계
+  = 2. Group 내부적으로 Recursive 가 만들어져 있는 (여러 Set 가 만들어져 있는) Case
+  = 3. Example
+     -> 1. EXPLAIN PLAIN SEARCH_STATE.ID = 'A1'
+     -> 2. EXPLAIN PLAIN SEARCH_STATE.ID = 'A2'
+     -> 3. 두 개의 Group 은 서로 아무런 상관관계가 존재하지 않음
+  
+  = 4. Query
+     -> 1. SELECT LPAD ('', 2 * LEVEL) || COLI...
+            FROM BOM
+            CONNECT BY PRIOR ID = P_ID
+              AND I_ID = 1
+            START WITH P_ID = 'A'
+              AND I_ID = 1
+
+    -> 2. WHERE CLAUSE 는 Check 기능이기 때문에 `AND T_ID = 1` 모두 Under-Cut 발생
+        => `GET 1` 을 천만배로 설정 할 수 없음
+    
+    -> 3. 같은 조건을 WHERE 조건에 넣을 것인지, CONNECT BY 절에 넣을 것이지에 따라 DATA 를 불러오는 속도 차이가 발생
+
+- 2. 전체 그룹 (집합) 순환 전개
+  = 1. 전체 집합끼리 전체가 하나의 Recursive 로 묶여져 있는 것
+  = 2. Group Code 를 양쪽 모두 넣어야 함
+  = 3. 전개할 RECURSIVE DATA 에 pk 는 하나일 때는 ok, But 2개일 때는 답이 없음
+     -> 1. Connect by Prior
+         => 1. where x.A = Y A'  -> Connect by Prior A = A'  (문제 없음, 정상)
+                    and x.B = Y B'                      Prior B = B'
+         
+         => 2. where x.A = Y A'  -> Connect by Prior A = A'  (자기 Record 가 B = B' 인 것은 없음, Prior 라는 Keyword 가 없어서 비정상)
+                    and x.B = Y B'                             B = B'
+         
+         => 3. Connect By Prior 는 역전개 또는 순전개를 하는 것이 아닌, `X.A`, `Y.B` 와 같이 진행
+
+    -> 2. 전개를 하며 하위 Depth 로 내려 가다가 특정 Data 를 만나면 그 Data 이하의 Depth 의 DATA 에 대해선 전개 금지 (SELECT 문 - Ordinary)
+    Level 0.         0           => 1. X 표시가 시작된 부분부터 시작
+    Level 1.    0         0      => 2. CONNECT BY FRIEND_ID = F_ID  에 `AND_ID = 'F' ` 조건이 있음   
+    Level 2.   0  0        X    => 3. 예하그룹 미전개
+    Level 3.   0          X X        
+
+    -> 3. 전개를 계속 하면서 하위 Depth 로 내려가되, 마지막의 Return 값에는 어떤 특정 Data 만 만나지 않아도 됨
+    Level 0.         0           => 1. X 표시만 있는 부분을 제외한 나머지 Data 보여주기 (Return 시)
+    Level 1.    0         0      => 2. WHERE 에 `ID <> 'F' ` 조건이 있음
+    Level 2.   0  0        X    => 3. 특정 그룹만 미전개
+    Level 3.   0          0  0
+   
+3. 전개 레벨과 업무 상 레벨이 다른 경우
+- 1. 업무 상 절대 레벨을 관리하는 속성 추가
+- 2. Dummy Parent 를 쓰는 방법
+  = 1. Dummy Parent 의 정의
+     -> 1. 가상의 부모를 만들어 두는 방법
+     -> 2. WHERE CLAUSE 활용
+         => 1. 전개를 계속 하면서 하위 Depth 로 갔는데, Data 가 안 나옴
+         => 2. 생산 관리하는 곳으로 가면 Dummy Parent 을 굉장히 많이 사용하고 있음
+
+  = 2. Dummy Parent
+     -> 1. 일반적인 Parent 는 독립적으로 부품을 사러갈 수도 있고, 따로 구매할 수도 있고, 따로 보관 가능
+     -> 2. 특정한 부분 (덩어리) 만 따로 잘라서 팔 수 없는 덩어리
+     -> 3. Example
+         => 1. 타이어 판매 (따로 팔 수 없음)
+         => 2. 개념적으로는 덩어리가 있으나, 개인적으로 구매를 할 수 없음
+     
+     -> 4. Dummy Parent 개수는 Child 가 원하는 N개 만큼 만들어 사용 가능
+     -> 5. 어떻게 구성되어 있는지에 관한 (구성 내역) 은 Dummy Parent 사용
+     -> 6. 자재 소유 관리 같은 경우는 Dummy Parent 사용
+
+4. 수평적 통합
+- 1. 나올 수 있는 업무의 종류
+  = 1. 집합 A 와 집합 B 가 완전하게 분할되어 있는 경우
+  = 2. 집합 A 와 집합 B 가 겹친 상태
+     -> 1. 어떤 집합과 어떤 집합이 조금 겹쳐진 상태 (Lossely Coupled System)
+     -> 2. 어떤 집합과 어떤 집합이 많이 겹쳐진 상태 (Tightly Coupled System)
+     -> 3. 어떤 집합 A가 어떤 집합 B에 포함된 상태 (Include System) 
+
+- 2. 역할의 통합 정의
+  = 1. 안에 내용물이 성격은 틀렸는데, 이 내용을 다 하고 난 후의 껍데기의 모습은 같음
+  = 2. 껍데기의 모습이 같음 = 역할이 같음
+     -> 1. 관리하고자 하는 대상이 서로 대동소이 할 수도 있음
+     -> 2. 약간의 차이가 있더라도 본질적으로, 활동적으로 유사할 경우, 통합
+     -> 3. 통합은 단순 산술적인 통합 이상의 효과가 있음 => 두 개체를 통합함으로써 얻은 시너지 효과
+     -> 4. Example
+         => 1. 교사와 학생 각각의 Entity 를 하나의 Entity 로 통합 (구성원)
+         => 2. 냉장고와 세탁기 각각의 Entity 를 하나의 Entity 로 통합 (가전제품)
+
+- 3. `같다`, `틀리다` 의미
+  = 1. 의미 상의 `같다`, `틀리다`
+  = 2. 내부 Attribute 의 구성의 서로 닮은 점 (비슷한 것)
+  = 3. 관리 항목이 같은 지에 대한 여부 => 통합
+
+- 4. 좋은 모델링을 만들었다는 뜻
+  = 1. 어떤 내용의 변화를 항목의 변화로 만들었는지에 대한 여부
+     -> 설계의 변경이 일어난다는 의미
+
+  = 2. 어떤 변화를 Value 의 변화로 만들었는지에 대한 여부
+     -> 설계의 변경이 안전하다는 의미 

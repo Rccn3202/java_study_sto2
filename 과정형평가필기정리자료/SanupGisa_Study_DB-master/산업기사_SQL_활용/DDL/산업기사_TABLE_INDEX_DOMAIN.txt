@@ -1,0 +1,34 @@
+CREATE TABLE Instructor
+id CHAR(5) PRIMARY KEY,
+name CHAR(15) NOT NULL,
+dept CHAR(15) NOT NULL
+FOREIGN KEY (dept) REFERENCES Department(dept)
+  ON DELETE SET NULL,
+  ON UPDATE CASCADE
+
+
+ALTER TABLE patient ADD job CHAR(20)
+
+
+CREATE TABLE patient
+id CHAR(5) PRIMARY KEY,
+name CHAR(10),
+sex CHAR(1),
+phone CHAR(20),
+CONSTRAINT KEY sex_ck CHECK(VALUE IN('f', 'm'))
+FOREIGN KEY (id) REFERENCES docter(id)
+
+
+CREATE UNIQUE INDEX Stud_idx
+ON Student(ssn) ASC
+
+
+CREATE DOMAIN 직위 VARCHAR(10)
+DEFALT '사원'
+CONSTRAINT VALID-직위 CHECK(VALUE IN('사원','대리','과장','부장','이사','사장'))
+
+
+CREATE UNIQUE INDEX 직원_NAME
+ON 직원(이름)
+
+

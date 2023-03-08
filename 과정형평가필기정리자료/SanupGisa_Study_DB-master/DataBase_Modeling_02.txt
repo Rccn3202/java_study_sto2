@@ -1,0 +1,90 @@
+1. 모델링
+- 1. 업무를 정의 해 놓은 것
+- 2. 업무를 관계형 DB 에 맞게 구성 => 관계형 DB
+- 3. 업무를 HTML 에 맞게 구성 => 계층형 구조
+
+2. System 개발 과정
+- 1. 데이터 모델링
+  = 1. 전략 수집 & 분석
+  = 2. Entity
+     -> 1. Entity 정의
+     -> 2. Entity - Relationship - Data Model (ERD Model)
+
+- 2. 데이터베이스 설계
+  = 1. 설계
+  = 2. Table
+     -> 1. Table 정의
+     -> 2. Model, View, Controller (MVC Patterns)
+     -> 3. 저장공간 지정
+
+- 3. 데이터베이스 생성
+  = 개발
+
+- 4. Business Requirement
+  = 1. Information 요구사항
+     -> 1. 논리적 Data Modeling
+         => Data Model Entity 정의
+     
+     -> 2. DB 설계
+         => Table 정의, Index, View, Cluster, 저장공간 지정
+
+     -> 3. DB Build
+         => 가동 Database
+
+  = 2. Application 요구사항
+     -> 1. 기본 Data Modeling
+         => Function 정의
+
+     -> 2. Application 설계
+         => Module 설계
+
+     -> 3. Application 개발
+         => 가동 불가능한 Application
+
+3. ERD
+- 1. 데이터 모델링
+  = 1. 우리가 관리하고자 하는 유용한 정보와 그 관계를 정의하고 현실화 하는 것
+     -> Entity - Relationship - Data Model (ERD Model) 은 필요한 정보와 일부 기능을
+         충분히 제공할 수 있도록 설계되어야 한다.
+     -> E-R Model 에 반영된 정보의 요구사항을 소개할 데이터베이스 설계로 바꾸는 작업
+     -> 작성된 DataBase Design 을 이용하여 물리적인 관계형 DB Table 을 생성시키는 작업
+
+- 2. 접근 방법
+  = 1. 접근방법 1 (후 Modeling)
+     -> Function Modeling -> DFD -> Data Store -> DFD => 현실적으로 가장 많이 사용하는 방법
+     -> 기능이 변하면 데이터 모양도 변경
+  
+  = 2. 접근방법 2 (두 가지 이상 병렬 처리) => 반드시 다수의 전문가 확보 시 적용
+     -> Function Modeling <-> Data Modeling (DFD & Data Store 동시 진행)
+     -> 업무 별로 분할하여 진행
+     -> 대형 프로젝트 & 다수의 개발 팀 => 일정 준수 용이
+ 
+  = 3. 접근방법 3 (선 Data Modeling, 후 Function Modeling)
+     -> Data Modeling -> DFD -> Function Modeling -> DFD -> Data Store
+     -> 객관적, 구체적
+     -> 업무를 모를 때 객관화가 쉽지 않다. (단점) -> 전문 모델러 확보 시 진행
+
+4. 논리적 데이터 모델링 (Logical Modeling)
+- 1. 전력 수립 및 분석 단계에서 실시
+- 2. 요구 되는 정보를 ERD Model 로 구현하는 것
+  = 1. ERD
+     -> Entity = 관리할 대상이 되는 것 (실체) = 집합
+     -> Relationship = Entity 의 대응 관계
+     -> Attribute = 관리할 정보의 구체적 항목
+
+  = 2. E-R Model 은 H/W 나 S/W 에 독립적 (HDB, NDB, RDB)
+
+- 3. Entities (실체)
+  = 1. 우리가 관리하고자 하는 (주어가 분명해야 함)
+  = 2. 영속적으로 존재하는 것
+  = 3. 객관적인 집합 (Set) 이 되어야 함 : 추상적 X
+  = 4. 집합을 정의하기에 따라 다양한 형태 가능
+  = 5. 집합에 대한 명확한 재정의 필요
+  = 6. 가로(속성)와 세로(개체 Row)가 있어야 면적 (실체)
+  = 7. 서로 실행 가능한 데이터 요소를 가짐
+  = 8. Entity 는 반드시 속성 (Attribute)를 가져야 함
+  = 9. 명시적 표현
+  = 10. 현재 업무 중에서 각종 마스터파일, 기타 파일
+  = 11. DFD 사용한 경우, Data Store 가 Entity 후보
+  = 12. Example
+     -> 사원 (내규 사원 ? 파견 회사 사원 ? == 기준 정하기 애매모호 할 수 있음)

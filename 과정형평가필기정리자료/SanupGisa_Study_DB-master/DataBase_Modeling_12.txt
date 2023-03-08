@@ -1,0 +1,67 @@
+1. 인조 (Artificial) UID
+- 식별자가 1개 초과의 수 (예를 들어서 7개) 이면 Artificial UID 를 사용하여 좀 더 효율적으로 사용 가능
+
+2. UID 지정 절차
+- 1. ATTRIBUTE 검토
+  = 1. 기존 통에 들어있는 식별자를 검증해서 Mandatory Attribute 가 있는지 확인
+  = 2. 식별자 있는지 확인
+  = 3. 어떤 결합이 식별자가 될 수 있는지 확인
+  = 4. 결합된 Attribute 중에도 없으면 인공 Attribute 확인
+
+- 2. RelationShip 고려
+  = 1. 식별자가 없을 경우 RelationShip 이 누락되었을 경우가 있으므로, 확인
+  = 2. ENTITY 를 식별할 RelationShip 있는지 확인
+  = 3. RelationShip = Mandatory + One and Only One 여부 확인
+
+- 3. UID 검증
+  = 1. Sample DATA 작성
+  = 2. UID 를 구성하는 Attribute 와 RelationShip Mandatory 인지 확인
+
+3. UID 의 2가지 역할 (인조 UID)
+- 1. 식별자 역할
+- 2. 정보로써의 가치
+- 3. Example
+  = 1. `A` ENTITY (할아버지) - `B` ENTITY (아버지)- `C` ENTITY (아들)
+     -> 1. `A` ENTITY 와 `B` ENTITY 사이에 UID Bar 를 끊을지 안끊을지 영향 받는 것은 `C` ENTITY 
+     -> 2. `B` ENTITY 가 받는 것이 아닌 `C` ENTITY 가 영향을 받음
+
+  = 2. `B` ENTITY 는 UID Bar 에 상관없이 `A` ENTITY 의 UID 를 상속 받음
+  = 3. 자식 ENTITY 인 `C` 에 상속 여부에 영향 미침
+  = 4. 자세하게 확인해야 할 것
+     -> 1. `C` ENTITY 는 조부 ENTITY 인 `A` 의  UID 정보로써 필요한가?
+     -> 2. `B` ENTITY 는 얼마나 많은 자식 ENTITY 를 거느리고 있는가?
+     -> 3. 얼마나 많은 자식 ENTITY 들이 조부 ENTITY 와 친밀한가?
+     -> 4. `C` 나 그 이하의 자식 ENTITY 들이 얼마나 조부 ENTITY 의 UID 를 정보로써 원하는가?
+     -> 5. 상속 단절(UID BAR 없이) 시키고 물리적 단계에서 접근경로 단축
+         => 단, 자식 ENTITY 중 일부 만이 조부 ENTITY 의 UID 를 정보로써 원할 경우
+
+4. 상속의 원리
+- 1. 할아버지 UID 가 손자에게 상속 되어 있을 경우
+  = 1. 그림상 -> 아버지 경유해야 함
+  = 2. 실제 Access -> 바로 할아버지와 연결 가능
+
+- 2. 만약 `아버지대 ENTITY` 나 중간 단계의 ENTITY 에서 UID 를 걸 경우, 하단의 Child ENTITY 는 모두 하나의 Depth 로 여겨짐
+  = 1. 조상은 누구인지 알지만, 각 ENTITY 간 변별력이 사라짐
+  = 2. `할아버지 ENTITY` 를 단절시킨 대신, `아버지대 ENTITY` 를 상속시키면, `아버지대 ENTITY` 까지 On-Depth 로 올라옴
+  = 3. 저 꼭대기에 있는 `할아버지대 ENTITY` 가 `아버지대 ENTITY` 에게 물어볼 것 (질문)이다.
+  = 4. `아버지대 ENEITY` 를 `교통의 요지` 로 만들면 효율적으로 서로 다른 Level 에 속한 ENTITY 들을 보다 효율적으로 관리 가능
+
+5. 배타적 관계에서 인조키
+- 1. 배타적 관계들이 의미상의 주어 (식별자) => UID 상속 받은 것인가?
+- 2. UID Bar 없애고, 자신의 인조키를 지정할 것인가?
+- 3. 배타적 관계의 부모 ENTITY 를 인조키로 지정할 것인가?
+- 4. Default 값을 지정하여 통일시킬 것인가?
+- 5. 배타적 관계의 ENTITY 를 만들지 않는 방법
+  = 배타적 관계의 ENTITY 를 만들게 된다면 생기는 단점
+     -> 1. UID BAR 있는 상위 ENTITY 를 쪼개면 됨
+     -> 2. 쪼개면 더욱 더 ENTITY 가 복잡해짐
+
+- 6. 판단 기준
+  = 1. 참조 ENTITY 의 UID 속성에 통일성이 있는지에 대한 여부 (개수, Type)
+  = 2. 참조 ENTITY 들의 다른 자식 ENTITY 의 관계
+  = 3. 자신의 자식 ENTITY 와의 관계
+
+- 7. Example 
+  = 1. 각 자식 ENTITY 의 Foreign Key 최대 갯수에 따라 식별자 3개가 만들어짐
+  = 2. 인조키가 3개가 아닌 곳은 NULL 값이 들어가므로, 식별자의 가치가 떨어짐
+

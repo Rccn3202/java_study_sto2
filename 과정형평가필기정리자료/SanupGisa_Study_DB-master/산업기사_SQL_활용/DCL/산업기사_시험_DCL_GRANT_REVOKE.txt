@@ -1,0 +1,44 @@
+GRANT DELETE ON 강좌 TO 김하늘 WITH GRANT OPTION
+REVOKE GRANT OPTION FOR SELECT, INSERT, DELETE ON 교수 FROM 김하늘
+REVOKE GRANT OPTION FOR UPDATE ON 수강 FROM 임꺽정 CASCADE
+
+
+1. 사용자 등급 지정 / 해제
+
+사용자 ID 가 "NABI" 인 사람에게 DB 및 테이블을 생성할 수 있는 권한을 부여하는 SQL 문
+GRANT RESOURCES TO NABI;
+
+사용자 ID 가 "DARAM" 인 사람에게 DB 접속 권한을 부여하는 SQL 문
+GRANT CONNECT TO DARAM;
+
+사용자 ID 가 "CLARK" 인 사람에게 DB 관리자 권한을 부여하는 SQL 문
+GRANT DBA TO CLARK;
+
+
+2. 테이블 및 속성에 대한 권한 부여 및 취소
+
+사용자 ID 가 "NABI" 인 사람에게 <고객> 테이블에 대한 모든 권한과 다른 사람에게 권한을 부여할 수 있는 권한까지 부여하는 SQL 문
+GRANT ALL ON 고객 TO NAVI WITH GRANT OPTION
+
+사용자 ID 가 "DARAM" 인 사람에게 <사원> 테이블에 대한 모든 권한 부여 SQL 문
+GRANT ALL ON 사원 TO DARAM
+
+사용자 ID 가 "STAR" 인 사람에게 부여한 <고객> 테이블에 대한 권한 중 UPDATE 권한을 다른 사람에게 부여할 수 있는 권한(만) 취소하는 SQL 문
+REVOKE GRANT OPTION FOR UPDATE ON 고객 FROM STAR
+
+사용자 ID 가 "CLARK" 인 사람에게 부여한 <사원> 테이블에 대한 권한 중 DELETE 권한(만) 취소하는 SQL 문
+REVOKE DELETE ON 사원 FROM CLARK
+
+
+3. SAVEPOINT
+
+<사원> 테이블에서 '사원번호' 가 40인 사원의 정보를 삭제한 후 COMMIT 수행
+DELETE FROM 사원 WHERE 사원번호 = 40
+COMMIT
+
+SAVEPOINT S1 을 설정하고 '사원번호' 가 30인 사원의 정보를 삭제
+SAVEPOINT S1
+DELETE FROM 사원 WHERE 사원번호 = 30
+
+SAVEPOINT S1 까지 ROLLBACK 수행
+ROLLBACK TO S1;

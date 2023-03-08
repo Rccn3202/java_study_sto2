@@ -1,0 +1,82 @@
+GRANT / REVOKE
+-> 1. 사용자 등급 지정 및 해제
+    => 1. 기본 구조
+         = 1. GRANT 사용자등급 TO 사용자_ID_리스트 [IDENTIFIED BY 암호]  -> 권한 부여
+         = 2. REVOKE 사용자등급 FROM 사용자_ID_리스트  -> 권한 해제
+         = 3. 사용자 등급
+            -- 1. DBA -> DB 관리자
+            -- 2. RESOURCE -> DB 및 Table 생성 가능자
+            -- 3. CONNECT -> 단순 사용자    
+
+    => 2. Example
+         = 1. 사용자 ID 가 'NABI' 인 사람에게 데이터베이스 및 테이블을 생성할 수 있는 권한을 부여하는 SQL 문
+         = 2. GRANT RESOURCE TO NABI
+         = 3. 사용자 ID 가 'STAR' 인 사람엑 단순히 데이터베이스에 있는 정보를 검색할 수 있는 권한을 부여하는 SQL 문
+         = 4. GRANT CONNECT TO STAR
+
+GRANT DBA TO USER1;
+REVOKE RESOURCES FROM USER2;
+GRANT CONNECT TO USER3;
+
+
+-> 2. 테이블 및 속성에 대한 권한 부여 및 취소
+    => 1. 기본 구조
+         = 1. GRANT 권한_리스트 ON 개체 TO 사용자 [WITH GRANT OPTION]
+         = 2. REVOKE [GRANT OPTION FOR] 권한_리스트 ON 개체 FROM 사용자 [CASCADE]
+
+    => 2. 자세한 사용법
+	 = 1. WITH GRANT OPTION -> 부여받은 권한을 다른 사용자에게 다시 부여할 수 있는 권한
+	 = 2. GRANT OPTION FOR -> 다른 사용자에게 권한을 부여할 수 있는 권한을 취소
+	 = 3. CASCADE -> 권한 취소 시 권한을 부여받았던 사용자가 다른 사용자에게 부여한 권한도 연쇄적으로 취소
+
+    => 3. Example
+         = 1. 사용자 ID 가 'NAVI' 인 사람에게 <고객> 테이블에 대한 모든 권한과 다른 사람에게 권한을 부여할 수 있는 권한까지 부여하는 SQL 문
+         = 2. GRANT ALL ON 고객 TO NAVI WITH GRANT OPTION
+         = 3. 사용자 ID 가 'STAR' 인 사람에게 <고객> 테이블에 대한 권한 중, UPDATE 권한을 다른 사람에게 부여할 수 있는 권한만 취소하는 SQL 문
+         = 4. REVOKE GRANT OPTION FOR UPDATE ON 고객 FROM STAR
+	 
+	 = 5. 사용자 ID 가 'NAVI' 인 사람에게 <고객> 테이블에 대한 모든 권한 부여
+	 = 6. GRANT ALL ON 고객 TO NAVI
+	 = 7. 사용자 ID 가 'STAR' 인 사람에게 <고객> 테이블에 대한 권한 중, UPDATE 권한 취소하며, 취소 시 권한을 부여받았던 사용자가 다른 사용자에게 부여한 권한도 연쇄적으로 취소
+	 = 8. REVOKE UPDATE ON 고객 FROM STAR CASCADE
+	 
+	 = 9. 사용자 ID 가 'STAR' 인 사람에게 <고객> 테이블에 대한 모든 권한 취소
+	 = 10. REVOKE ALL ON 고객 FROM STAR
+
+
+GRANT ALL ON 고객사 TO USER1 WITH GRANT OPTION;
+REVOKE GRANT OPTION FOR INSERT, UPDATE, DELETE ON 고객사 FROM USER2;
+GRANT DELETE ON 강좌 TO 김하늘 WITH GRANT OPTION;
+REVOKE GRANT OPTION FOR INSERT, UPDATE, DELETE ON 교수 FROM 임꺽정;
+
+
+COMMIT / ROLLBACK
+-> 1. COMMIT 기본 구조 (정의)
+    => 트랜잭션이 수행한 내용을 데이터베이스에 반영하는 명령어
+
+-> 2. ROLLBACK 기본 구조 (정의)
+    => 변경되었으나 아직 COMMIT 되지 않은 모든 내용들을 취소하고 데이터베이스를 이전 상태로 되돌리는 명령어
+
+
+SAVEPOINT
+-> 1. 기본 구조 (정의)
+    => 트랜잭션 내에 ROLLBACK 할 위치인 저장점을 지정하는 명령어
+
+-> 2. Example
+    => 1. <사원> 테이블에서 '사원번호' 가 40 인 사원의 정보를 삭제한 후 COMMIT 을 수행
+    => 2. DELETE FROM 사원 WHERE 사원번호 = 40; COMMIT;
+
+    => 3. SAVEPOINT 'S1' 을 설정하고, '사원번호' 가 20인 사원의 정보를 삭제
+    => 4. SAVEPOINT S1; DELETE FROM 사원 WHERE 사원번호 = 20;
+
+    => 5. SAVEPOINT 'S2' 를 설정하고, '사원번호' 가 10인 사원의 정보를 삭제
+    => 6. SAVEPOINT S2; DELETE FROM 사원 WHERE 사원번호 = 10;
+
+    => 7. SAVEPOINT 'S2' 까지 ROLLBACK 을 수행
+    => 8. ROLLBACK TO S2
+
+    => 9. SAVEPOINT 없이 ROLLBACK 수행
+    => 10. ROLLBACK
+
+SAVEPOINT S1;
+ROLLBACK TO S1;

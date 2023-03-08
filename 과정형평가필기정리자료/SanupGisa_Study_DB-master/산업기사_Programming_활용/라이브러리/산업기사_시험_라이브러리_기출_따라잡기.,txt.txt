@@ -1,0 +1,6 @@
+1. stdlib.h 가 제공하는 기능
+-> 자료형 변환, 난수 발생, 메모리 할당
+
+
+2. Java 에서 날짜 처리, 복잡한 문자열 처리, Data, Calendar, Random, StringTokenizer 등의 다양한 클래스가 포함되어 있는 패키지의 이름
+-> java.util

@@ -1,0 +1,246 @@
+1. 관계형 DataBase 
+- 1. 관계형 DB 를 써야 하는 이유
+  = 1. 물리적으로 연결된 거리가 없음
+     -> 연결 동작이 동적으로 일어날 경우
+         => Optimizer 에 의해서 그 순간에 Access 가 만들어지는 것은 기존 개념과 많이 틀린 것
+
+  = 2. 장점을 잘 활용하면 남들이 짠 코드 1000 줄을 10 여줄까지도 줄일 수 있음
+     -> 응용력의 차이에 따라 (활용도의 차이에 따라) 코드를 효율적으로도 관리할 수도 있음
+
+  # = 3. RDB 의 Architecture 가지고 Cover 할 수 있으며, 그 위에 ODB 의 일부 기능이 얹허셔 좀 더 편리하게 사용 가능
+  
+- 2. 관계형 DB 의 특징
+  = 1. 2차원의 Table 형태로 표현 
+     -> 1. 기존에 하나의 Record 구조에서 여러 정보들을 복잡하게 다루는 것보다 큰 차이 발생
+     -> 2. 차이가 발생하는 것은 SQL Normal 를 통해서 연결하여 사용
+     -> 3. SQL 을 가지고 DataBase 가 스스로 Access 를 만들어 줌
+         => 활용도의 차이가 많이 발생
+
+  = 2. 쉽게 배울 수 있음
+     -> 한 번도 SQL 을 건드려보지 않은 사람한테 SQL 교육 2 ~ 3 일 시키고 관계형 DB 교육 시키면 금방 함
+
+  = 3. Table 구조는 Column 과 Row 로 구성되어 있음
+
+2. 기본 키 (PRIMARY KEY)
+- 1. 논리적인 의미
+  = 1. UID 의 특성
+  = 2. 논리적으로 존재하는 식별자 => UID
+  = 3. (우리가 지금까지 모델링한) UID 의 의미가 Table 로 구조로 온 것
+
+- 2. 물리적인 의미
+  = 1. Constraint 로 지정으로 해서 Primary Key 라는 명령어
+  = 2. Not Null & Unity 의 특징을 가지고 있음
+  = 3. 논리적인 기능을 물리적으로 Check 해 줌 => 하나의 보조적인 (물리적인) 기능
+
+- 3. 전체 특징
+  = 1. 기본 키 (PK) 는 하나 혹은 여러 개의 Column 으로 구성
+  = 2. Table 에 있는 각 ROW 를 Unique 하게 하는 Column (들)
+  = 3. 모든 Table 은 반드시 PK 를 가져야 함
+  = 4. 모든 PK 는 반드시 Unique 해야 함
+  = 5. PK 는 일반적으로 자주 변경되지 않음
+  = 6. 각 ENTITY 의 UID 는 Table 의 PK 가 됨
+  = 7. PK 의 각 Column 은 NULL 값을 가질 수 없음
+  = 8. Table 은 하나 이상의 식별자를 가질 수 있으며, Alternative Key (Or Unique Key) 가 됨
+
+3. 외래 키 (FOREIGN KEY)
+- 1. 전체 특징
+  = 1. 같은 Table 이나 다른 Table 들의 PK 를 호출
+  = 2. Table Join 시 주로 사물 (논리적 연결고리)
+  = 3. 순수한 논리적인 개념
+  = 4. 외부 키는 창조하는 PK 와 반드시 연결되거나 NULL
+  = 5. 외부 키가 PK 의 한 부분이라 NULL 을 가질 수 없음
+  = 6. 매우 높은 결합도를 가진 Table 을 한에서 적용한 것
+
+- 2. Foreign Key 와 Primary Key 차이
+  = 1. Attribute 가 이미 와있다면 ForeignKey
+  = 2. 내 Attribute 가 아닌 Relation 으로 인해 
+  = 3. Constraint Key 사용 시, 주로 사용
+     -> References 들이 Constarint 를 주로 많이 사용
+
+4. 데이터 무결성
+- 1. 참조 무결성 (Referential Integrity)
+  = 1. 외부 Key 는 반드시 존재하고 있는 기본 Key 와 연결되거나 NULL 이어야 함
+  = 2. 종류
+     -> 1. FOREIGN KEY       
+     -> 2. CASCADE
+     -> 3. Referenced Table
+     -> 4. Referenting Table
+
+  = 3. 참조 무결성 지정
+     -> 1. 참조 무결성 의미
+         => 불가분의 관계 (생사 고락을 같이 하겠다는 관계) 를 의미
+    
+     -> 2. 대부분의 Entity 는 주변 Entity 와 다양한 관계를 가질 수 있음
+     -> 3. 필수 관계 지정 시 대부분의 CASE Tool 의 Default 는 참조 무결성 지정
+         => 필수 관계일 때 반드시 참조 무결성을 지정하는 것이 좋은가
+
+     -> 4. 우리가 많은 사람들과 관계를 맺고 있지만, 목숨을 같이 할 만큼 필연적인 관계는 실제로 많지 않음
+
+- 2. 속성 무결성 (Attribute Integrity)
+  = 1. 제한 기능
+     -> 1. 자식의 도리 => 부모 없이는 태어나서는 안됨
+     -> 2. 부모의 도리 => 자식을 두고 죽어서는 안됨
+ 
+  = 2. NULLIFY
+     -> 1. DBMS 마다 지원 여부 결정
+     -> 2. 부모가 돌아가시면 자식들은 고아원으로 보냄
+     -> 3. 왕이 죽으면 후궁들은 정업원으로 보냄
+
+  = 3. CASCADE
+     -> 1. CASCADE DELETE -> 동반 자살
+     -> 2. CASCADE UPDATE -> 부모에 의해 창씨개명 
+
+- 3. 사용자 정의 무결성 (Attribute Integrity)
+  = 1. DataBase 나 모든 Data 들은 사용자가 정의한 업무 규칙 (제약조건) 을 준수해야 함
+  = 2. 종류
+     -> 1. LONG
+     -> 2. LAW
+     -> 3. ROWD
+     -> 4. LONG RANGE
+     -> 5. MLSLAE
+
+- 4. Enable / Disable
+- 5. Cascading (Delete, Update)
+  = 1. CASCADE DELETE -> 동반 자살
+  = 2. CASCADE UPDATE -> 부모에 의해 창씨개명
+
+5. 데이터 모델링 과정
+- 1. 전략 수립 & 분석
+  = 개념 데이터 모델링
+     -> 1. Entity 정의
+     -> 2. Entity - Relationship Data Model (E-R Data Model)
+
+- 2. 설계
+  = 데이터베이스 설계
+     -> 1. 논리 설계 (기초 설계)
+     -> 2. 상세 설계
+         => 1. Table 정의
+         => 2. Index, View, Cluster, 저장 공간 지원
+
+- 3. 개발
+  = 데이터베이스 생성
+
+6. 기초 설계
+- 1. 1단계
+  = 단위 ENTITY 를 Table 로
+
+- 2. 2단계
+  = 1. Attribute 를 Column 으로
+  = 2. Sample Data 작성
+
+- 3. 3단계
+  = UID 를 기본 키 (Primary Key)
+
+- 4. 4단계
+  = RELATIONSHIP 을 외부 키 (Foreign Key) 로
+
+- 5. 5단계
+  = 아크 (Arc) 옵션 처리
+     -> Exclusive 관계가 없을 경우 (복잡한 Arc 관계)
+
+- 6. 6단계
+  = SubType 옵션 처리
+     -> SubType 이 없는 경우
+
+- 7. 5단계와 6단계를 거쳐, Exclusive 관계가 있거나 SubType 관계가 있는 것
+  = 인간의 판단을 약간 넣기 
+     -> 1. Table 하나로 처리할 것인가
+     -> 2. Table 여러 개로 처리할 것인가
+
+7. 단위 ENTITY 를 TABLE 로
+- 1. Table 이름을 짓고, 그 Table 이 하는 내용이 무슨 내용인가에 대해 (어떤 일을 처리하는지에 대해) 작성
+  = Table 이 무슨 내용 (이름) 인지 알 수 있도록 변별력을 주는 것이 좋음
+
+- 2. 일반적으로 TABLE 명칭과 ENTITY 명칭은 길게 하는 것이 좋음
+- 3. 필요에 따라 ENTITY 명칭은 한글도 하고 동의어를 영문으로 표시
+  = 가능한 TABLE 명칭과 같게
+
+- 4. 사례표 (Instance Chart) 에 Table 의 역할을 간략하게 표현
+- 5. SuperType 이나 SubType 은 나중에 결정
+
+8. 속성을 Column 으로
+- 1. ENTITY 에 있는 속성들을 사례표에 Column 명에 기록
+- 2. Column 의 명칭과 속성의 명칭은 반드시 일치할 필요는 없지만, 가장 좋은 방법은 나중에 서로의 Communication 을 위해 표준된 약어를 만드는 것이 좋음
+  = 1. Example -> 10만 단을 가지고 100만권의 책을 만들 수 있음
+  = 2. Programmer 와 사용자의 혼동을 피하기 위해 가능한 표준화 된 약어 사용
+
+- 3. Column 명은 가능하면 짧게 지정
+  = 1. 필수 입력 속성란 Nulls / Unique 란에 NN 을 표시
+  = 2. 견본 데이터를 입력시킴
+
+- 5. 단계 별 고찰
+  = 1. 1단계
+     -> 1. 키 형태란에 ENTITY 의 UID 에 속하는 모든 속성들에 PK 를 표시
+     -> 2. PK 로 표시 된 모든 Column 들은 Nulls / Unique 단에 반드시 NN.U 로 표시 되어야 함
+         => 1. UID 를 PK 로 확정하는 작업
+         => 2. U -> PK (Primary Key)
+
+     -> 3. 여러 개의 Column 으로 UID 가 구성되어 있는 경우는 각각의 Column 에 NN.U1 을 표시
+         => 1. U1 -> PK (Primary Key)
+         => 2. U2 -> FK (Foreign Key) 또는 다른 대체 키 (Alternative Key)
+
+     -> 4. 또 다른 Unique Key 가 있다면 NN.U2 로 표시
+         => Example
+              * 1. idx => NN.U1 (PK)
+              * 2. product_idx => NN.U2 (AlterNative Key)
+
+  = 2. 2단계
+     -> 1. Table 에 외부 키 (FK) Column 을 포함시킴
+     -> 2. PK 의 일부분으로 표시
+         => 1. Nulls / Unique 란에 각각 NN.U1 를 표시
+         => 2. 키 형태란에 `PK, FK` 를 표시
+         => 3. 여러 UID BAR 가 있는 경우는 `PK, FK1`, `PK, FK2`
+         => 4. 여러 Column 으로 구성한 경우, `PK, FK1` 를 각각에 표시
+   
+     -> 3. 추가 된 FK Column 에 표본 Data 를 추가
+
+- 6. 관계를 외부 키 (FK) 로
+  = 1. M : 1 관계
+     -> 1. UID 를 기본 키 (Primary Key) 로
+         => 1. FK 의 명칭 을 결정
+         => 2. 키 형태란에 PK 표시
+         => 3. Nulls / Unique 란에 NN 표시 (Must be 관계사)
+     
+     -> 2. 표본 Data 추가
+     -> 3. UID BAR 가 있는 경우는 전 단계에서 실시되었음
+
+  = 2. 1 : 1 관계 (Mandatory)
+     -> 1. Mandatory 반대쪽에 있는 Table 의 PK 를 Mandatory 쪽 Table 의 FK 로
+     -> 2. NN 표시 (Not Null)
+     -> 3. 점선 쪽에 있는 UID 를 직선 쪽에 있는 UID 로 끌고 가는 것이 일반적인 규칙
+         => 한 쪽이 점선, 다른 한 쪽이 직선일 경우, 점선 쪽에 있는 식별자를 직선 쪽으로 끌고 가도록 설계 해야 함
+
+     -> 4. Example
+         => 1. P/C (고유번호, 유형, 메모리)
+              * 1. 직선일 때는 NN (Not Null) 로 표시
+              * 2. 1 : 1 관계에서는 Not Null 이면서 FK 인 Column 은 U2 라고 작성해야 함
+
+         => 2. 마더보드 (일련번호, 프로세서칩, 프로세서속도)
+              * FK 로 들어오는 마더보드의 UID 는 왜 U2 로 써야 하는가 (한 쪽이 점선으로 들어오거나 양 쪽 모두 점선으로 들어올 경우 또한 포함)
+                *> 1. 마더보드 Entity 에서 1 : 1 이라는 특성때문에 마더보드 Entity 에서 Unique 했음
+                *> 2. 마더보드 Entity 에서 Unique 했더라도 1 : 1 특성으로 인하여 P/C Entity 에서도 UID 가 계속 유지가 됨
+
+  = 3. 1 : 1 관계 (Optional)
+     -> 1. 어느 한 쪽의 PK 를 다른 짝의 FK 로
+     -> 2. 보다 빈번하게 사용되는 Table 이 FK 를 가지는 것이 유리
+     -> 3. FK 에 U 표시
+         => 1. 양 쪽 모두 점선인 경우는 더 중요하고 더 자주 쓴다고 생각하는 Entity 쪽이 받는 쪽으로
+         => 2. 받는다는 의미 -> 속성이 더 늘어남 -> 정보의 양 증가
+         => 3. 더 자주 쓰고, 더 중요하고, 데이터의 수가 더 많은 Table 이 `받는 Table` 이 되기에 조건 충족
+
+     -> 4. Example (1)
+         => 1. 정박지 (고유번호, 기간)
+         => 2. 선박 (선박번호, 선박국가, 선박명)
+              * 1. U2 는 선박 Entity 의 1 : 1 이라는 특성때문에 선박 Entity 에서 Unique 했음
+              * 2. 1 : 1 특성이 그대로 정박지 Entity 에서도 UID 가 그대로 유지 됨
+              * 3. NN 이 빠진 이유
+                *> 직선이 없기 때문
+                
+     -> 5. Example (2)
+         => 1. 섬과 육지를 잇는 다리
+              * 1. 섬이나 육지 두 곳 중 한 곳에서 이미 다리를 놓았으면 굳이 다른 한 쪽에서 다리를 놓을 필요는 없음
+              * 2. 섬 측에서 섬과 육지를 이어주는 다리를 만들었다면 육지 측에서 만들 필요는 없음
+              * 3. 육지 측에서 섬과 육지를 이어주는 다리를 만들었다면 섬 측에선 만들 필요는 없음
+         
+         => 2. 어느 한 쪽에만 PK 설정, 주는 쪽에다가 한 Column 에 막힌 Column 을 가져가면 됨
+         => 3. 주는 쪽에 있다 없다는 막힌 Column 을 가져다 놓으면 충분함
