@@ -1,0 +1,50 @@
+2023.03.09.목
+
+17장 스트림
+1단계->2단계->3단계
+
+마지막 단계까지 코드가 완성되어야 데이터를 1단계에 넣어주는 것->처리속도 빠름
+
+중간처리는 선택, 오리지널스트림과 최종처리 부분은 필수
+
+
+1. 자바스크립트를 html에 적용하는 방법
+1)내부에 쓴다<script></script>
+2)외부 파일로 쓴다 <script src="change-color.js">    </script>
+
+2. 입출력 방법
+1)알림창으로 출력
+let number=100;
+alert(number + "클릭을 하셨다");
+
+
+2)확인창으로 출력
+let text1 = document.getElementById("text1");
+text1.onclick = function(){
+    let name="홍길동";
+    let result = confirm(name+"자바스트립트를 클릭하셨다");
+    alert(result);//리턴 받아서 확인 누르면 true 취소는 flases
+    //확인 = true, 취소 - false
+    if (result){
+        name = "김"
+        alert(name);
+    }else{
+        alert(name)
+    }
+
+
+3)프롬프트창으로 입력 받기
+자바 스캐너 같은것
+형식 prompt("메시지", [기본값(쓰거나 안쓰거나)])
+
+4)웹브라우저에 출력하기
+document.write("<p>내용</p>");//<p>는 임의의 태그
+
+5)콘솔창에 출력하기
+console.log("출력할 내용");
+
+
+//예제
+알고싶은 구구단은? 3
+웹페이지에 3단 출력
+
